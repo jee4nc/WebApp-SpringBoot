@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:fragment="headerFiles">
+    <meta  http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>Productos</title>
+    <link rel="icon" type="img/png" th:src="@{/imgs/carpivara.jpg}" />
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css"
+          rel="stylesheet"
+          integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css"
+          integrity="sha512-YWzhKL2whUzgiheMoBFwW8CKV4qpHQAEuvilg9FAn5VJUDwKZZxkJNuGM4XkWuk94WCrrwslk8yWNGmY1EduTA=="
+          crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="icon" type="img/png" th:href="@{/imgs/logo_carpi.ico}">
+</head>
+<body>
+    <div th:fragment="nav">
+        <!--NAVBAR-->
+        <nav class="navbar navbar-expand-lg navbar-light bg-lights">
+            <div class="container-fluid">
+                <div class="col-4">
+                    <a class="navbar-brand" th:href="@{/}">
+                        <i class="fas fa-carrot" style="font-size: 1.4em;">
+                            E-Fruits
+                        </i>
+                    </a>
+                </div>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                        <li class="nav-item " id="hover-icon1" >
+                            <a class="nav-link active"  aria-current="page" (click)="changeClassOver1()"
+                               id="hover-icon1.1"  th:href="@{/}">
+                                <i class="fas fa-seedling" ></i>
+                                Soy productor</a>
+                        </li>
+                        <li class="nav-item" id="hover-icon2" >
+                            <a class="nav-link active "  th:href="@{/}" (click)="changeClassOver2()"  id="hover-icon2.2">
+                                <i class="fas fa-truck"></i>
+                                Soy transportista</a>
+                        </li>
+                        <li class="nav-item" id="hover-icon3">
+                            <a class="nav-link active"  th:href="@{/}" (click)="changeClassOver3()"  id="hover-icon3.3">
+                                <i class="fas fa-money-bill-wave"></i>
+                                Soy vendedor</a>
+                        </li>
+                        <li class="nav-item" id="hover-icon4">
+                            <a class="nav-link active" th:href="@{/}" (click)="changeClassOver4()"  id="hover-icon4.4">
+                                <i class="fas fa-shopping-cart"></i>
+                                Quiero comprar</a>
+                        </li>
+                    </ul>
+                    <form class="d-flex">
+                        <button type="button" routerLink="/registration" routerLinkActive="active" class="btn btn-primary" style="margin-right: 5px">Crea tu cuenta</button>
+                        <button type="button" class="btn btn-success">Inicia Sesión</button>
+                    </form>
+                </div>
+            </div>
+        </nav>
+        <!--END NAVBAR-->
+
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ"
+            crossorigin="anonymous"></script>
+</body>
+</html>

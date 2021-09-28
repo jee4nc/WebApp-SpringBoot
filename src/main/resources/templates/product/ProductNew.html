@@ -1,10 +1,41 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:insert="fragments :: headerFiles">
     <meta charset="UTF-8">
     <title>New Product</title>
 </head>
 <body>
+<header th:insert="fragments :: nav"></header>
 
+<div class="container">
+    <div class="row">
+        <div class="col-md-4 mx-auto">
+            <h1>Nuevo Producto</h1>
+            <form th:action="@{/product/creator}" method="post">
+                <div class="mb-3">
+                    <label for="name" class="form-label">Name of product</label>
+                    <input type="text" class="form-control"  name="name" required="required" id="name">
+                </div>
+                <div class="mb-3">
+                    <label for="price" class="form-label">Price of product</label>
+                    <input type="number" class="form-control" name="price" required="required" id="price">
+                </div>
+                <button type="submit" class="btn btn-outline-success btn-block">
+                    <i class="far fa-save"></i>
+                    Submit</button>
+            </form>
+            <a th:href="@{/product/list}" style="text-decoration: none">
+                <button class="btn btn-outline-info btn-block">
+                    <i class="fas fa-arrow-circle-left"></i>
+                    Back
+                </button>
+            </a>
+            <div th:if="${error}" class="alert alert-danger alert-dismissible fade show mt-2" role="alert">
+                <strong>Holy guacamole!</strong> <p th:text="${error}"></p>
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+        </div>
+    </div>
+</div>
 </body>
 </html>

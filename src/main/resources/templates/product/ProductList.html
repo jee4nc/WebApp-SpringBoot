@@ -23,17 +23,17 @@
         <tr th:each="product: ${products}">
             <td th:text="${product.name}"></td>
             <td th:text="${product.price}"></td>
-            <td><a th:href="@{'/product/details' + ${product.id}}">
+            <td><a th:href="@{'/product/details/' + ${product.id}}">
                 <button class="btn btn-outline-primary">
                     <i class="far fa-eye"></i>
                 </button>
             </a> </td>
-            <td><a th:href="@{'/product/set' + ${product.id}}">
+            <td><a th:href="@{'/product/edit/' + ${product.id}}">
                 <button class="btn btn-outline-warning">
                     <i class="far fa-edit"></i>
                 </button>
             </a> </td>
-            <td><a th:href="@{'/product/delete' + ${product.id}}">
+            <td><a th:href="@{'/product/delete/' + ${product.id}}">
                 <button class="btn btn-outline-danger">
                     <i class="far fa-trash-alt"></i>
                 </button>

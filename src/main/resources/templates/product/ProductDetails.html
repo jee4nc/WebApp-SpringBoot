@@ -1,10 +1,22 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:insert="fragments :: headerFiles">
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Product Details</title>
 </head>
 <body>
-
+<header th:insert="fragments :: nav"></header>
+<div class="container">
+    <div class="card-header text-center">
+        Detalles del Producto
+    </div>
+    <div class="card-body">
+        <h5 class="card-title" th:text=" 'Nombre: ' + ${product.name}"> </h5>
+        <p class="card-text" th:text="'Precio: ' + ${product.price}"></p>
+        <a class="btn btn-outline-info" th:href="@{/product/list}">
+            <i class="fas fa-arrow-circle-left"></i>  Volver
+        </a>
+    </div>
+</div>
 </body>
 </html>

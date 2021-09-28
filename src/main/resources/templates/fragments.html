@@ -13,6 +13,7 @@
           integrity="sha512-YWzhKL2whUzgiheMoBFwW8CKV4qpHQAEuvilg9FAn5VJUDwKZZxkJNuGM4XkWuk94WCrrwslk8yWNGmY1EduTA=="
           crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="icon" type="img/png" th:href="@{/imgs/logo_carpi.ico}">
+    <link rel="stylesheet" th:href="@{/styles/login_register.css}">
 </head>
 <body>
     <div th:fragment="nav">
@@ -34,13 +35,13 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                         <li class="nav-item " id="hover-icon1" >
-                            <a class="nav-link active"  aria-current="page" (click)="changeClassOver1()"
+                            <a class="nav-link active"  aria-current="page"
                                id="hover-icon1.1"  th:href="@{/}">
                                 <i class="fas fa-seedling" ></i>
                                 Soy productor</a>
                         </li>
                         <li class="nav-item" id="hover-icon2" >
-                            <a class="nav-link active "  th:href="@{/}" (click)="changeClassOver2()"  id="hover-icon2.2">
+                            <a class="nav-link active "  th:href="@{/}"  id="hover-icon2.2">
                                 <i class="fas fa-truck"></i>
                                 Soy transportista</a>
                         </li>
@@ -50,14 +51,20 @@
                                 Soy vendedor</a>
                         </li>
                         <li class="nav-item" id="hover-icon4">
-                            <a class="nav-link active" th:href="@{/}" (click)="changeClassOver4()"  id="hover-icon4.4">
+                            <a class="nav-link active" th:href="@{/}" id="hover-icon4.4">
                                 <i class="fas fa-shopping-cart"></i>
                                 Quiero comprar</a>
                         </li>
                     </ul>
                     <form class="d-flex">
-                        <button type="button" routerLink="/registration" routerLinkActive="active" class="btn btn-primary" style="margin-right: 5px">Crea tu cuenta</button>
-                        <button type="button" class="btn btn-success">Inicia Sesión</button>
+                        <a th:href="@{/user/register}">
+                            <button type="button"
+                                    class="btn btn-primary"
+                                    style="margin-right: 5px">Crea tu cuenta</button>
+                        </a>
+                        <a th:href="@{/login}">
+                            <button type="button" class="btn btn-success">Inicia Sesión</button>
+                        </a>
                     </form>
                 </div>
             </div>

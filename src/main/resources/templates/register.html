@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:insert="fragments :: headerFiles">
+    <meta charset="UTF-8">
+    <title>Register</title>
+</head>
+<body>
+<header th:insert="fragments :: nav"></header>
+<div class="container d-flex justify-content-center">
+    <div class="card">
+        <div class="card-header">
+            <ul class="nav nav-tabs">
+                <li class="nav-item">
+                    <a class="nav-link" aria-current="page" th:href="@{/login}">
+                        <i class="fas fa-user"></i> Login</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active" th:href="@{/user/register}">
+                        <i class="fas fa-user-plus"></i> Register</a>
+                </li>
+            </ul>
+        </div>
+        <div class="card-body">
+            <div  class="alert alert-success alert-dismissible fade show mt-2" role="alert">
+                <strong>Holy guacamole!</strong> <p></p>
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+
+            <form th:action="@{/user/register}" method="post">
+                <div class="mb-3">
+                    <label for="email" class="form-label">Email</label>
+                    <input type="email" class="form-control"  name="email" required="required" id="email">
+                </div>
+                <div class="mb-3">
+                    <label for="password" class="form-label">Password</label>
+                    <input type="password" class="form-control" name="password" required="required" id="password">
+                </div>
+                <button type="submit" class="btn btn-outline-success btn-block">
+                    <i class="fas fa-user-plus"></i>
+                    Crear Cuenta</button>
+            </form>
+            <a th:href="@{/product/list}" style="text-decoration: none">
+                <button class="btn btn-outline-info btn-block">
+                    <i class="fas fa-arrow-circle-left"></i>
+                    Back
+                </button>
+            </a>
+            <div  class="alert alert-danger alert-dismissible fade show mt-2" role="alert">
+                <strong>Holy guacamole!</strong> <p ></p>
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

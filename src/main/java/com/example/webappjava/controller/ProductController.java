@@ -4,6 +4,7 @@ import com.example.webappjava.entity.Product;
 import com.example.webappjava.service.ProductService;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
@@ -25,6 +26,7 @@ public class ProductController {
         return mv;
     }
 
+    @PreAuthorize("hasRole('ADMIN')")
     @GetMapping("new")
     public String newProduct() {
         return "product/ProductNew";
@@ -32,6 +34,7 @@ public class ProductController {
 
 
     // Create new Product
+    @PreAuthorize("hasRole('ADMIN')")
     @PostMapping("/creator")
     public ModelAndView creator(@RequestParam String name, @RequestParam float price){
         ModelAndView mv = new ModelAndView();
@@ -68,6 +71,7 @@ public class ProductController {
         return mv;
     }
 
+    @PreAuthorize("hasRole('ADMIN')")
     @PostMapping("/update")
     public ModelAndView update(@RequestParam int id,
                                @RequestParam String name,
@@ -103,6 +107,7 @@ public class ProductController {
         return new ModelAndView("redirect:/product/list");
     }
 
+    @PreAuthorize("hasRole('ADMIN')")
     // When clicked icon edit
     @GetMapping("/edit/{id}")
     public ModelAndView edit(@PathVariable("id") int id) {
@@ -116,6 +121,7 @@ public class ProductController {
         return mv;
     }
 
+    @PreAuthorize("hasRole('ADMIN')")
     @GetMapping("/delete/{id}")
     public ModelAndView delete(@PathVariable("id") int id){
         // Check if exists

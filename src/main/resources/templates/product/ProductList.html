@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org" >
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head th:insert="fragments :: headerFiles">
 
     <meta charset="UTF-8">
@@ -15,8 +16,8 @@
                 <th scope="col">Name</th>
                 <th scope="col">Precio</th>
                 <th scope="col">Ver</th>
-                <th scope="col">Editar</th>
-                <th scope="col" >Eliminar</th>
+                <th scope="col" sec:authorize="hasRole('ROLE_ADMIN')">Editar</th>
+                <th scope="col" sec:authorize="hasRole('ROLE_ADMIN')" >Eliminar</th>
             </tr>
         </thead>
         <tbody>
@@ -28,12 +29,12 @@
                     <i class="far fa-eye"></i>
                 </button>
             </a> </td>
-            <td><a th:href="@{'/product/edit/' + ${product.id}}">
+            <td sec:authorize="hasRole('ROLE_ADMIN')"><a th:href="@{'/product/edit/' + ${product.id}}">
                 <button class="btn btn-outline-warning">
                     <i class="far fa-edit"></i>
                 </button>
             </a> </td>
-            <td><a th:href="@{'/product/delete/' + ${product.id}}">
+            <td sec:authorize="hasRole('ROLE_ADMIN')"><a th:href="@{'/product/delete/' + ${product.id}}">
                 <button class="btn btn-outline-danger">
                     <i class="far fa-trash-alt"></i>
                 </button>
@@ -41,7 +42,7 @@
         </tr>
         </tbody>
     </table>
-    <a th:href="@{/product/new}">
+    <a  sec:authorize="hasRole('ROLE_ADMIN')" th:href="@{/product/new}">
         <button class="btn btn-outline-success btn-lg">
             <i class="fas fa-plus-circle"> New Product</i>
         </button>

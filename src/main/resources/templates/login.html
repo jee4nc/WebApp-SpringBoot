@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head th:insert="fragments :: headerFiles">
     <meta charset="UTF-8">
     <title>Title</title>
@@ -21,11 +22,18 @@
             </ul>
         </div>
         <div class="card-body">
-
-            <form th:action="@{/login}" method="post">
+            <div th:if="${registroOK}" class="alert alert-success alert-dismissible fade show" role="alert">
+                <p th:text="${registroOK}"></p>
+                <button type="button" class="close" data-bs-dismiss="alert" aria-label="Close">
+                </button>
+            </div>
+            <form th:action="@{/signin}" method="post" sec:authorize="!isAuthenticated()">
+                <!-- Prevent csrf attacks -->
+                <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}">
+                <!-- END -->
                 <div class="mb-3">
                     <label for="email" class="form-label">Email</label>
-                    <input type="email" class="form-control"  name="email" required="required" id="email">
+                    <input type="text" class="form-control"  name="email" required="required" id="email">
                 </div>
                 <div class="mb-3">
                     <label for="password" class="form-label">Password</label>
@@ -35,14 +43,15 @@
                     <i class="fas fa-sign-in-alt"></i>
                     Iniciar Sesión</button>
             </form>
+            <p sec:authorize="isAuthenticated()">Ya haz iniciado sesion</p>
             <a th:href="@{/product/list}" style="text-decoration: none">
                 <button class="btn btn-outline-info btn-block">
                     <i class="fas fa-arrow-circle-left"></i>
                     Back
                 </button>
             </a>
-            <div th:if="${error}" class="alert alert-danger alert-dismissible fade show mt-2" role="alert">
-                <strong>Holy guacamole!</strong> <p th:text="${error}"></p>
+            <div th:if="${param.error}" class="alert alert-danger alert-dismissible fade show mt-2" role="alert">
+                <p>Credenciales Erroneas</p>
                 <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
             </div>
         </div>

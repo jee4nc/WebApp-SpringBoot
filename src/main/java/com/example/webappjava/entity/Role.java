@@ -1,5 +1,6 @@
 package com.example.webappjava.entity;
 
+import com.example.webappjava.enums.RoleName;
 import com.sun.istack.NotNull;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -7,32 +8,28 @@ import lombok.Setter;
 
 import javax.persistence.*;
 
-@Entity
 @NoArgsConstructor
 @Getter
 @Setter
-public class Product {
-
+@Entity
+public class Role {
     @Id
     @SequenceGenerator(
-            name="product_sequence",
-            sequenceName = "product_sequence",
+            name="role_sequence",
+            sequenceName = "role_sequence",
             allocationSize = 1
     )
     @GeneratedValue(
             strategy = GenerationType.SEQUENCE,
-            generator = "product_sequence"
+            generator = "role_sequence"
     )
     private int id;
-
     @NotNull
+    @Enumerated(EnumType.STRING)
     @Column(unique = true)
-    private String name;
+    private RoleName roleName;
 
-    private float price;
-
-    public Product(String name, float price) {
-        this.name = name;
-        this.price = price;
+    public Role(RoleName roleName) {
+        this.roleName = roleName;
     }
 }

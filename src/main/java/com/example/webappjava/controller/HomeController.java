@@ -13,9 +13,15 @@ public class HomeController {
         return "index";
     }
 
+
     @GetMapping(value = { "/login"})
     public String login() {
         return "login";
+    }
+
+    @GetMapping("/forbidden")
+    public String forbidden() {
+        return "forbidden";
     }
 
 }

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head th:insert="fragments :: headerFiles">
     <meta charset="UTF-8">
     <title>New Product</title>
@@ -12,6 +12,9 @@
         <div class="col-md-4 mx-auto">
             <h1>Nuevo Producto</h1>
             <form th:action="@{/product/creator}" method="post">
+                <!-- Prevent csrf attacks -->
+                <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}">
+                <!-- END -->
                 <div class="mb-3">
                     <label for="name" class="form-label">Name of product</label>
                     <input type="text" class="form-control"  name="name" required="required" id="name">

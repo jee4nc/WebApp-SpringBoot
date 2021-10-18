@@ -29,7 +29,9 @@ public class CreateAdmin implements CommandLineRunner {
     public void run(String... args) throws Exception {
 //        AppUser appUser = new AppUser();
 //        String passwordEncoded = passwordEncoder.encode("admin");
-//        appUser.setName("admin");
+//        appUser.setEmail("admin@admin.com");
+//        appUser.setFirstName("Don Administrador");
+//        appUser.setLastName("Apellido");
 //        appUser.setPassword(passwordEncoded);
 //        Role roleAdmin = roleService.getByRoleName(RoleName.ROLE_ADMIN).get();
 //        Role roleUser = roleService.getByRoleName(RoleName.ROLE_USER).get();

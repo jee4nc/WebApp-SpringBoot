@@ -28,7 +28,13 @@ public class AppUser {
 
     @NotNull
     @Column(unique = true)
-    private String name;
+    private String email;
+
+    @NotNull
+    private String firstName;
+
+    @NotNull
+    private String lastName;
 
     @NotNull
     private String password;
@@ -38,8 +44,10 @@ public class AppUser {
     @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "role_id"))
     private Set<Role> roles = new HashSet<>();
 
-    public AppUser(String name, String password, Set<Role> roles) {
-        this.name = name;
+    public AppUser(String email, String firstName, String lastName, String password, Set<Role> roles) {
+        this.email = email;
+        this.firstName = firstName;
+        this.lastName = lastName;
         this.password = password;
         this.roles = roles;
     }

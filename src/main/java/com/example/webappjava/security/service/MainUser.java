@@ -16,7 +16,9 @@ import java.util.stream.Collectors;
 public class MainUser implements UserDetails {
 
     private int id;
-    private String name;
+    private String email;
+    private String firstName;
+    private String lastName;
     private String password;
     private Collection<? extends GrantedAuthority> authorities;
 
@@ -25,7 +27,9 @@ public class MainUser implements UserDetails {
         List<GrantedAuthority> authorityList =
             appUser.getRoles().stream().map(role -> new SimpleGrantedAuthority
                     (role.getRoleName().name())).collect(Collectors.toList());
-        return new MainUser(appUser.getId(), appUser.getName(), appUser.getPassword(), authorityList);
+        return new MainUser(appUser.getId(), appUser.getEmail(),
+                appUser.getFirstName(), appUser.getLastName(),
+                appUser.getPassword(), authorityList);
     }
 
     @Override
@@ -40,7 +44,7 @@ public class MainUser implements UserDetails {
 
     @Override
     public String getUsername() {
-        return name;
+        return email;
     }
 
     @Override
@@ -61,6 +65,14 @@ public class MainUser implements UserDetails {
     @Override
     public boolean isEnabled() {
         return true;
+    }
+
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
     }
 
     public int getId() {

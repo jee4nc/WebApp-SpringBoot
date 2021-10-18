@@ -24,8 +24,8 @@ public class AppUserService {
         return appUserRepository.findById(id);
     }
 
-    public Optional<AppUser> getByName(String name) {
-        return appUserRepository.findByName(name);
+    public Optional<AppUser> getByEmail(String email) {
+        return appUserRepository.findByEmail(email);
     }
 
     public void save(AppUser appUser) {
@@ -36,7 +36,7 @@ public class AppUserService {
         return appUserRepository.existsById(id);
     }
 
-    public boolean existsByName(String name) {
-        return appUserRepository.existsByName(name);
+    public boolean existsByEmail(String email) {
+        return appUserRepository.existsByEmail(email);
     }
 }

@@ -58,7 +58,14 @@
                         </a>
                     </form>
                 </div>
-                <form sec:authorize="isAuthenticated()" class="form-inline my-2 my-lg-0" th:action="@{/logout}" method="post">
+                <form sec:authorize="isAuthenticated()" class="form-inline my-2 my-lg-0"
+                      method="post" style="padding-right: 5px;">
+                    <button class="btn btn-outline-info my-2 my-sm0" type="submit">
+                        <i class="fas fa-truck"></i> ¿ Eres transportista ?
+                    </button>
+                </form>
+                <form sec:authorize="isAuthenticated()" class="form-inline my-2 my-lg-0" th:action="@{/logout}"
+                      method="post">
                     <button class="btn btn-outline-danger my-2 my-sm0" type="submit">
                         <i class="fas fa-sign-out-alt"></i> Cerrar Sesión
                     </button>

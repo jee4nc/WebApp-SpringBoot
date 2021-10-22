@@ -6,6 +6,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.util.Set;
 
 @Entity
 @Getter
@@ -29,7 +30,11 @@ public class Country {
     @Column(unique = true)
     private String name;
 
-    public Country(String name) {
+    @OneToMany(mappedBy = "country")
+    private Set<City> city;
+
+    public Country(String name, Set<City> city) {
         this.name = name;
+        this.city = city;
     }
 }

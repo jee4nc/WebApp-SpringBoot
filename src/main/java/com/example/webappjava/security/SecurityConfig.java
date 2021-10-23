@@ -50,6 +50,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                         "/login",
                         "/user/register", "/styles/**",
                         "/imgs/**",
+                        "/cities/**",
                         "/js/**")
                 .permitAll()
                 .antMatchers("/user/registerUser")

@@ -1,17 +1,20 @@
 package com.example.webappjava.entity;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.sun.istack.NotNull;
+import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
-import java.util.Set;
+import java.util.List;
 
 @Entity
 @Getter
 @Setter
 @NoArgsConstructor
+@EqualsAndHashCode
 public class Country {
 
     @Id
@@ -30,11 +33,12 @@ public class Country {
     @Column(unique = true)
     private String name;
 
-    @OneToMany(mappedBy = "country")
-    private Set<City> city;
+    @OneToMany(mappedBy = "country", fetch = FetchType.LAZY)
+    @JsonManagedReference
+    private List<City> cities;
 
-    public Country(String name, Set<City> city) {
+    public Country(String name, List<City> cities) {
         this.name = name;
-        this.city = city;
+        this.cities = cities;
     }
 }

@@ -8,6 +8,7 @@
 <body>
 <header th:insert="fragments :: nav"></header>
 <div class="container d-flex justify-content-center">
+    <script type="text/javascript" th:src="@{/js/jquery-3.6.0.min.js}" ></script>
     <div class="card">
 
 <!--        Login/Register Icons up the form-->
@@ -50,12 +51,22 @@
                     <input type="password" class="form-control" name="password" required="required" id="password">
                 </div>
                 <div class="mb-3">
-                    <label style="padding-bottom: 7px;"> Country</label>
-                    <select class="form-select form-select-lg mb-3" aria-label=".form-select-lg example"
-                    th:field="*{countries}">
+                    <label style="padding-bottom: 7px;">Country</label>
+                    <select class="form-select form-select-sm" aria-label=".form-select-sm example"
+                    th:field="*{countries}" id="countryLocation">
                         <option th:each="country: ${countries}"
                         th:value="${country.id}"
                         th:text="${country.name}">
+                        </option>
+                    </select>
+                </div>
+                <div class="mb-3">
+                    <label style="padding-bottom: 7px;">City</label>
+                    <select class="form-select form-select-sm" aria-label=".form-select-sm example"
+                            th:field="*{cities}" id="cityLocation">
+                        <option th:each="city: ${cities}"
+                                th:value="${city.id}"
+                                th:text="${city.name}">
                         </option>
                     </select>
                 </div>

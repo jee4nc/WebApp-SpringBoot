@@ -1,10 +1,12 @@
 package com.example.webappjava.controller;
 
 import com.example.webappjava.entity.AppUser;
+import com.example.webappjava.entity.City;
 import com.example.webappjava.entity.Country;
 import com.example.webappjava.entity.Role;
 import com.example.webappjava.enums.RoleName;
 import com.example.webappjava.service.AppUserService;
+import com.example.webappjava.service.CityService;
 import com.example.webappjava.service.CountryService;
 import com.example.webappjava.service.RoleService;
 import org.apache.commons.lang3.StringUtils;
@@ -12,16 +14,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.sql.SQLOutput;
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 @Controller
 @RequestMapping("/user")
@@ -33,22 +30,31 @@ public class UserController {
     // Testing code for load data into selection fields
     @Autowired
     CountryService countryService;
+
     // end of code
 
     @Autowired
     RoleService roleService;
 
     @Autowired
+    CityService cityService;
+
+    @Autowired
     PasswordEncoder passwordEncoder;
 
+//    Esta funcion permite poder entregar una lista
+//    de los paises al fronted register.html
     @GetMapping("/register")
     public String register(Model model){
         // Testing code for load data into selection fields
         List<Country> listTest = countryService.list();
         model.addAttribute("countries", listTest);
+        List<City> listCity = cityService.list();
+        model.addAttribute("cities", listCity);
         // End of teting code
         return "register";
     }
+
 
 //    ACTION CREATE CONTROLLER (NOT THE VIEW, THE FUNCTION)
     @PostMapping("/registerUser")

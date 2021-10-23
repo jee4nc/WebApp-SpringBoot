@@ -5,6 +5,7 @@ import com.example.webappjava.entity.Country;
 import com.example.webappjava.repository.CityRepository;
 import com.example.webappjava.repository.CountryRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
@@ -18,6 +19,7 @@ public class CityService {
     CityRepository cityRepository;
 
     public List<City> list() {return cityRepository.findAll();}
+    public List<City> findAllByCountry(int id) {return cityRepository.findByCountryId(id);}
     public Optional<City> getOne(int id) { return cityRepository.findById(id);}
     public Optional<City> getByName(String name) {return cityRepository.findByName(name);}
     public void save(City city) {cityRepository.save(city);}

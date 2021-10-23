@@ -1,6 +1,8 @@
 package com.example.webappjava.entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.sun.istack.NotNull;
+import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -11,6 +13,7 @@ import javax.persistence.*;
 @Getter
 @Setter
 @NoArgsConstructor
+@EqualsAndHashCode
 public class City {
 
     @Id
@@ -28,8 +31,9 @@ public class City {
     @NotNull
     private String name;
 
-    @ManyToOne
-    @JoinColumn(name = "country_id", nullable = false)
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "country_id")
+    @JsonBackReference
     private Country country;
 
     public City(String name, Country country) {

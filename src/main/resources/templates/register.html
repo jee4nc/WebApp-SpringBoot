@@ -49,6 +49,16 @@
                     <label for="password" class="form-label">Password</label>
                     <input type="password" class="form-control" name="password" required="required" id="password">
                 </div>
+                <div class="mb-3">
+                    <label style="padding-bottom: 7px;"> Country</label>
+                    <select class="form-select form-select-lg mb-3" aria-label=".form-select-lg example"
+                    th:field="*{countries}">
+                        <option th:each="country: ${countries}"
+                        th:value="${country.id}"
+                        th:text="${country.name}">
+                        </option>
+                    </select>
+                </div>
                 <!-- END FORM FIELDS-->
 
                 <button type="submit" class="btn btn-outline-success btn-block">

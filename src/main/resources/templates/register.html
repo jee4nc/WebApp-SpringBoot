@@ -56,7 +56,8 @@
                     <label style="padding-bottom: 7px;">Country</label>
                     <select class="form-select form-select-sm"
                             aria-label=".form-select-sm example"
-                            th:field="*{countries}">
+                    id="country"
+                    name="country">
                         <option th:each="country: ${countries}"
                         th:value="${country.id}"
                         th:text="${country.name}">

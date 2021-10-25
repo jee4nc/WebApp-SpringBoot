@@ -58,7 +58,13 @@ public class UserController {
 
 //    ACTION CREATE CONTROLLER (NOT THE VIEW, THE FUNCTION)
     @PostMapping("/registerUser")
-    public ModelAndView registerUser(String email, String password, String firstName, String lastName) {
+    public ModelAndView registerUser(String email,
+                                     String password,
+                                     String firstName,
+                                     String lastName,
+                                     String street,
+                                     Country country
+                                     ) {
         ModelAndView mv = new ModelAndView();
 
 //        VALIDATIONS OF FIELDS
@@ -82,6 +88,18 @@ public class UserController {
             mv.addObject("error", "La contraseña no puede estar vacia");
             return mv;
         }
+        if(StringUtils.isBlank(street)) {
+            mv.setViewName("/register");
+            mv.addObject("error", "La Calle no puede estar vacia");
+            return mv;
+        }
+        String countryName = country.getName();
+
+        if(StringUtils.isBlank(countryName)) {
+            mv.setViewName("/register");
+            mv.addObject("error", "Debes seleccionar un pais");
+            return mv;
+        }
 
         if(appUserService.existsByEmail(email)) {
             mv.setViewName("/register");
@@ -93,10 +111,13 @@ public class UserController {
         //Create the new User
         AppUser appUser = new AppUser();
 
+
         //Set the values
         appUser.setEmail(email);
         appUser.setFirstName(firstName);
         appUser.setLastName(lastName);
+        appUser.setStreet(street);
+        appUser.setCountry(country);
         appUser.setPassword(passwordEncoder.encode(password));
         Role roleUser = roleService.getByRoleName(RoleName.ROLE_USER).get();
         Set<Role> roles = new HashSet<>();

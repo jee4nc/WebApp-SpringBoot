@@ -27,7 +27,9 @@
 <!--        End Login/Register Icons-->
 
         <div class="card-body">
-            <form th:action="@{/user/registerUser}" method="post" sec:authorize="!isAuthenticated()">
+            <form th:action="@{/user/registerUser}"
+                  method="post"
+                  sec:authorize="!isAuthenticated()">
 
                 <!-- Prevent csrf attacks -->
                 <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}">
@@ -52,23 +54,28 @@
                 </div>
                 <div class="mb-3">
                     <label style="padding-bottom: 7px;">Country</label>
-                    <select class="form-select form-select-sm" aria-label=".form-select-sm example"
-                    th:field="*{countries}" id="countryLocation">
+                    <select class="form-select form-select-sm"
+                            aria-label=".form-select-sm example"
+                            th:field="*{countries}">
                         <option th:each="country: ${countries}"
                         th:value="${country.id}"
                         th:text="${country.name}">
                         </option>
                     </select>
                 </div>
+<!--                <div class="mb-3">-->
+<!--                    <label style="padding-bottom: 7px;">City</label>-->
+<!--                    <select class="form-select form-select-sm" aria-label=".form-select-sm example"-->
+<!--                            th:field="*{cities}" id="cityLocation">-->
+<!--                        <option th:each="city: ${cities}"-->
+<!--                                th:value="${city.id}"-->
+<!--                                th:text="${city.name}">-->
+<!--                        </option>-->
+<!--                    </select>-->
+<!--                </div>-->
                 <div class="mb-3">
-                    <label style="padding-bottom: 7px;">City</label>
-                    <select class="form-select form-select-sm" aria-label=".form-select-sm example"
-                            th:field="*{cities}" id="cityLocation">
-                        <option th:each="city: ${cities}"
-                                th:value="${city.id}"
-                                th:text="${city.name}">
-                        </option>
-                    </select>
+                    <label for="street" class="form-label">Street</label>
+                    <input type="text" class="form-control" name="street" required="required" id="street">
                 </div>
                 <!-- END FORM FIELDS-->
 

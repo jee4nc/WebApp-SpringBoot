@@ -19,10 +19,10 @@ public class CreateCity  implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
-//        City city = new City();
-//        city.setName("Amazonas");
-//        Country countryFrom = countryService.getByName("Perú").get();
-//        city.setCountry(countryFrom);
-//        cityService.save(city);
+        City city = new City();
+        city.setName("Valparaiso");
+        Country countryFrom = countryService.getByName("Chile").get();
+        city.setCountry(countryFrom);
+        cityService.save(city);
     }
 }

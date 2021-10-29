@@ -61,6 +61,14 @@
                 <form sec:authorize="isAuthenticated()"
                       class="form-inline my-2 my-lg-0"
                       method="post" style="padding-right: 5px;">
+                    <!--                      th:action="@{/logout}"-->
+                    <button class="btn btn-outline-warning my-2 my-sm0" type="submit">
+                        <i class="fas fa-seedling"></i> ¿ Eres proovedor ?
+                    </button>
+                </form>
+                <form sec:authorize="isAuthenticated()"
+                      class="form-inline my-2 my-lg-0"
+                      method="post" style="padding-right: 5px;">
 <!--                      th:action="@{/logout}"-->
                     <button class="btn btn-outline-info my-2 my-sm0" type="submit">
                         <i class="fas fa-truck"></i> ¿ Eres transportista ?

@@ -36,7 +36,7 @@ public class ProductController {
     // Create new Product
     @PreAuthorize("hasRole('ADMIN')")
     @PostMapping("/creator")
-    public ModelAndView creator(@RequestParam String name, @RequestParam float price){
+    public ModelAndView creator(@RequestParam String name, @RequestParam double price){
         ModelAndView mv = new ModelAndView();
         if(StringUtils.isBlank(name)){
             mv.setViewName("product/ProductNew");
@@ -75,7 +75,7 @@ public class ProductController {
     @PostMapping("/update")
     public ModelAndView update(@RequestParam int id,
                                @RequestParam String name,
-                               @RequestParam float price) {
+                               @RequestParam double price) {
         // Check if exists
         if (!productService.existsById(id))
             return new ModelAndView("redirect:/product/list");

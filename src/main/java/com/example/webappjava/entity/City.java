@@ -36,16 +36,10 @@ public class City {
     @JsonBackReference
     private Country country;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "app_user_id")
-    @JsonBackReference
-    private AppUser appUser;
 
     public City(String name,
-                Country country,
-                AppUser appUser) {
+                Country country) {
         this.name = name;
         this.country = country;
-        this.appUser = appUser;
     }
 }

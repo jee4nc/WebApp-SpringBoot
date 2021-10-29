@@ -29,9 +29,9 @@ public class Product {
     @Column(unique = true)
     private String name;
 
-    private float price;
+    private Double price;
 
-    public Product(String name, float price) {
+    public Product(String name, Double price) {
         this.name = name;
         this.price = price;
     }

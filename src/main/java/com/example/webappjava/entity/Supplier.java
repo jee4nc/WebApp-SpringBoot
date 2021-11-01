@@ -12,17 +12,16 @@ import java.util.Date;
 @Getter
 @Setter
 @NoArgsConstructor
-public class Carrier {
-
+public class Supplier {
     @Id
     @SequenceGenerator(
-            name="carrier_sequence",
-            sequenceName = "carrier_sequence",
+            name = "supplier_sequence",
+            sequenceName = "supplier_sequence",
             allocationSize = 1
     )
     @GeneratedValue(
             strategy = GenerationType.SEQUENCE,
-            generator = "carrier_sequence"
+            generator = "supplier_sequence"
     )
     private int id;
 
@@ -34,27 +33,19 @@ public class Carrier {
     private Date birthday;
 
     @NotNull
-    private String typeLicense;
+    private String street;
 
-    @NotNull
-    private String destiny;
-
-    @NotNull
-    private Float tariff;
-
-    @OneToOne(mappedBy = "carrier")
+    @OneToOne(mappedBy = "supplier")
     private AppUser appUser;
 
     @ManyToOne
-    @JoinColumn(name="city_id", nullable = false)
+    @JoinColumn(name = "city_id", nullable = false)
     private City city;
 
-    public Carrier(String rut, Date birthday, String typeLicense, String destiny, Float tariff, AppUser appUser, City city) {
+    public Supplier(String rut, Date birthday, String street, AppUser appUser, City city) {
         this.rut = rut;
         this.birthday = birthday;
-        this.typeLicense = typeLicense;
-        this.destiny = destiny;
-        this.tariff = tariff;
+        this.street = street;
         this.appUser = appUser;
         this.city = city;
     }

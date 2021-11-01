@@ -41,10 +41,17 @@
                                 <i class="fas fa-money-bill-wave"></i>
                                 Lista de productos</a>
                         </li>
-                        <li class="nav-item" id="hover-icon4" sec:authorize="isAuthenticated() &&  hasRole('ROLE_ADMIN')">
-                            <a class="nav-link active" th:href="@{/}" id="hover-icon4.4">
-                                <i class="fas fa-shopping-cart"></i>
-                                Menu Usuario admin</a>
+<!--                        <li class="nav-item" id="hover-icon4" sec:authorize="isAuthenticated() &&  hasRole('ROLE_ADMIN')">-->
+<!--                            <a class="nav-link active" th:href="@{/}" id="hover-icon4.4">-->
+<!--                                <i class="fas fa-shopping-cart"></i>-->
+<!--                                Menu Usuario admin</a>-->
+<!--                        </li>-->
+                        <li class="nav-item" id="hover-icon4"
+                            sec:authorize="isAuthenticated() ">
+                            <a class="nav-link active"
+                               th:href="@{/product/list2}" id="hover-icon4.4">
+                                <i class="fas fa-money-bill-wave"></i>
+                                List product2</a>
                         </li>
                     </ul>
                     <form class="d-flex">

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head th:insert="fragments :: headerFiles">
+
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <style>
+    </style>
+</head>
+<body>
+<header th:insert="fragments :: nav" ></header>
+
+<div class="container" th:each="product : ${products}">
+        <div class="card" style="width: 18rem;">
+            <img th:src="@{/imgs/apple.jpg.jpeg}" class="card-img-top" alt="...">
+            <div class="card-body">
+                <h5 class="card-title" th:text="${product.name}"></h5>
+                <p class="card-text" th:text="${product.price}"></p>
+                <a href="#" class="btn btn-primary">Go somewhere</a>
+            </div>
+        </div>
+</div>
+</body>
+</html>

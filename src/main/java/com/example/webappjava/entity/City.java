@@ -8,6 +8,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.util.Set;
 
 @Entity
 @Getter
@@ -36,10 +37,13 @@ public class City {
     @JsonBackReference
     private Country country;
 
+    @OneToMany(mappedBy = "city")
+    private Set<Carrier> carriers;
 
-    public City(String name,
-                Country country) {
+
+    public City(String name, Country country, Set<Carrier> carriers) {
         this.name = name;
         this.country = country;
+        this.carriers = carriers;
     }
 }

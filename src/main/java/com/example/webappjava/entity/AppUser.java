@@ -58,6 +58,15 @@ public class AppUser {
     @JsonBackReference
     private City city;
 
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "carrier_id", referencedColumnName = "id")
+    private Carrier carrier;
+
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "supplier_id", referencedColumnName = "id")
+    private Supplier supplier;
+
+
     public AppUser(String email,
                    String firstName,
                    String lastName,

@@ -26,6 +26,16 @@ public class ProductController {
         return mv;
     }
 
+    @GetMapping("list2")
+    public ModelAndView list2() {
+        ModelAndView mv = new ModelAndView();
+        mv.setViewName("/product/ProductList2");
+        List<Product> products = productService.list();
+        mv.addObject("products", products);
+        return mv;
+    }
+
+
     @PreAuthorize("hasRole('ADMIN')")
     @GetMapping("new")
     public String newProduct() {

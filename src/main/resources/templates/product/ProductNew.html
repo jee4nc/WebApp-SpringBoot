@@ -23,6 +23,26 @@
                     <label for="price" class="form-label">Price of product</label>
                     <input type="number" class="form-control" name="price" required="required" id="price">
                 </div>
+                <div class="mb-3">
+                    <label style="padding-bottom: 7px;">Unit of measure</label>
+                    <select class="form-select form-select-sm"
+                            aria-label=".form-select-sm example"
+                            id="unitMeasurement"
+                            name="unitMeasurement">
+                        <option th:each="unit: ${units}"
+                                th:value="${unit.id}"
+                                th:text="${unit.unitName}">
+                        </option>
+                    </select>
+                </div>
+                <div class="mb-3">
+                    <label for="quantity" class="form-label">Initial Quantity</label>
+                    <input type="number" class="form-control" name="quantity" required="required" id="quantity">
+                </div>
+                <div class="mb-3">
+                    <label for="quality" class="form-label">Quality</label>
+                    <input type="number" class="form-control" name="quality" required="required" id="quality">
+                </div>
                 <button type="submit" class="btn btn-outline-success btn-block">
                     <i class="far fa-save"></i>
                     Submit</button>
@@ -40,5 +60,8 @@
         </div>
     </div>
 </div>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ"
+        crossorigin="anonymous"></script>
 </body>
 </html>

@@ -30,6 +30,24 @@
                            id="price"
                            th:value="${product.price}">
                 </div>
+                <div class="mb-3">
+                    <label for="quantity" class="form-label">Quantity</label>
+                    <input type="number"
+                           class="form-control"
+                           name="quantity"
+                           required="required"
+                           id="quantity"
+                           th:value="${product.quantity}">
+                </div>
+                <div class="mb-3">
+                    <label for="quality" class="form-label">Quality</label>
+                    <input type="number"
+                           class="form-control"
+                           name="quality"
+                           required="required"
+                           id="quality"
+                           th:value="${product.quality}">
+                </div>
                 <button type="submit" class="btn btn-outline-success btn-block">
                     <i class="fas fa-sync"></i>
                     Submit</button>
@@ -47,5 +65,8 @@
         </div>
     </div>
 </div>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ"
+        crossorigin="anonymous"></script>
 </body>
 </html>

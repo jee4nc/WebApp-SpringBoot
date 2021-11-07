@@ -15,6 +15,9 @@
             <tr>
                 <th scope="col">Name</th>
                 <th scope="col">Precio</th>
+                <th scope="col">Quantity</th>
+                <th scope="col">Quality</th>
+                <th scope="col">Unit Measure</th>
                 <th scope="col">Ver</th>
                 <th scope="col" sec:authorize="hasRole('ROLE_ADMIN')">Editar</th>
                 <th scope="col" sec:authorize="hasRole('ROLE_ADMIN')" >Eliminar</th>
@@ -24,6 +27,9 @@
         <tr th:each="product: ${products}">
             <td th:text="${product.name}"></td>
             <td th:text="${product.price}"></td>
+            <td th:text="${product.quantity}"></td>
+            <td th:text="${product.quality}"></td>
+            <td th:text="${product.unitMeasurement.unitName}"></td>
             <td><a th:href="@{'/product/details/' + ${product.id}}">
                 <button class="btn btn-outline-primary">
                     <i class="far fa-eye"></i>
@@ -49,6 +55,8 @@
     </a>
 
 </div>
-
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ"
+        crossorigin="anonymous"></script>
 </body>
 </html>

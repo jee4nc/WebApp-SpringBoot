@@ -1,5 +1,6 @@
 package com.example.webappjava.entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.sun.istack.NotNull;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -31,8 +32,20 @@ public class Product {
 
     private Double price;
 
-    public Product(String name, Double price) {
+    private Double quantity;
+
+    private Integer quality;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "unitMeasure_id")
+    @JsonBackReference
+    private UnitMeasurement unitMeasurement;
+
+    public Product(String name, Double price, Double quantity, Integer quality, UnitMeasurement unitMeasurement) {
         this.name = name;
         this.price = price;
+        this.quantity = quantity;
+        this.quality = quality;
+        this.unitMeasurement = unitMeasurement;
     }
 }

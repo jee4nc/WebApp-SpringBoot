@@ -36,12 +36,20 @@
                     </select>
                 </div>
                 <div class="mb-3">
-                    <label for="quantity" class="form-label">Initial Quantity</label>
-                    <input type="number" class="form-control" name="quantity" required="required" id="quantity">
+                    <label style="padding-bottom: 7px;">Quality</label>
+                    <select class="form-select form-select-sm"
+                            aria-label=".form-select-sm example"
+                            id="quality"
+                            name="quality">
+                        <option th:each="quality: ${qualities}"
+                                th:value="${quality.id}"
+                                th:text="${quality.qualityName}">
+                        </option>
+                    </select>
                 </div>
                 <div class="mb-3">
-                    <label for="quality" class="form-label">Quality</label>
-                    <input type="number" class="form-control" name="quality" required="required" id="quality">
+                    <label for="quantity" class="form-label">Initial Quantity</label>
+                    <input type="number" class="form-control" name="quantity" required="required" id="quantity">
                 </div>
                 <button type="submit" class="btn btn-outline-success btn-block">
                     <i class="far fa-save"></i>

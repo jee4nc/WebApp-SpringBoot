@@ -18,9 +18,9 @@
             <img th:src="@{/imgs/apple.jpg.jpeg}" class="card-img-top" alt="...">
             <div class="card-body">
                 <h5 class="card-title" th:text="${product.name}"></h5>
-                <p class="card-text" th:text="${product.price}"></p>
+                <p class="card-text" th:text="'Precio: '+ ${product.price}"></p>
                 <p class="card-text">Cant. Disponible: [[${product.quantity}]]</p>
-                <p class="card-text">Calidad: [[${product.quality}]]</p>
+                <p class="card-text">Calidad: [[${product.quality.qualityName}]]</p>
                 <p class="card-text">Unidad de venta: [[${product.unitMeasurement.unitName}]]</p>
 <!--                data-bs-target="#exampleModal"-->
                 <button type="button" class="btn btn-primary" data-bs-toggle="modal"

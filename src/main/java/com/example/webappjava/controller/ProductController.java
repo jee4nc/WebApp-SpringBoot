@@ -1,10 +1,12 @@
 package com.example.webappjava.controller;
 
 import com.example.webappjava.entity.Product;
+import com.example.webappjava.entity.Quality;
 import com.example.webappjava.entity.Role;
 import com.example.webappjava.entity.UnitMeasurement;
 import com.example.webappjava.enums.RoleName;
 import com.example.webappjava.service.ProductService;
+import com.example.webappjava.service.QualityService;
 import com.example.webappjava.service.UnitMeasureService;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,6 +26,9 @@ public class ProductController {
 
     @Autowired
     UnitMeasureService unitMeasureService;
+
+    @Autowired
+    QualityService qualityService;
 
     @GetMapping("list")
     public ModelAndView list() {
@@ -49,6 +54,8 @@ public class ProductController {
     public String newProduct(Model model) {
         List<UnitMeasurement> listUnits = unitMeasureService.list();
         model.addAttribute("units", listUnits);
+        List<Quality> listQuality = qualityService.list();
+        model.addAttribute("qualities", listQuality);
         return "product/ProductNew";
     }
 
@@ -57,7 +64,7 @@ public class ProductController {
     @PreAuthorize("hasRole('ADMIN')")
     @PostMapping("/creator")
     public ModelAndView creator(@RequestParam String name, @RequestParam double price,
-                                @RequestParam double quantity, @RequestParam int quality,
+                                @RequestParam double quantity, @RequestParam Quality quality,
                                 @RequestParam UnitMeasurement unitMeasurement) {
         ModelAndView mv = new ModelAndView();
         if (StringUtils.isBlank(name)) {
@@ -80,11 +87,7 @@ public class ProductController {
             mv.addObject("error", "La cantidad es requerida");
             return mv;
         }
-        if (quality < 1) {
-            mv.setViewName("product/ProductNew");
-            mv.addObject("error", "La calidad del producto es requerida");
-            return mv;
-        }
+
         Product product = new Product(name, price, quantity, quality, unitMeasurement);
         productService.save(product);
 
@@ -109,7 +112,7 @@ public class ProductController {
                                @RequestParam String name,
                                @RequestParam double price,
                                @RequestParam double quantity,
-                               @RequestParam int quality) {
+                               @RequestParam Quality quality) {
         // Check if exists
         if (!productService.existsById(id))
             return new ModelAndView("redirect:/product/list");
@@ -135,12 +138,7 @@ public class ProductController {
             mv.addObject("error", "La cantidad debe ser minimo 1 ");
             return mv;
         }
-        if (quality < 1) {
-            mv.setViewName("product/ProductSet");
-            mv.addObject("product", product);
-            mv.addObject("error", "Se debe ingresar la calidad del producto");
-            return mv;
-        }
+
         if (productService.existsByName(name) && productService.getByName(name).get().getId() != id) {
             mv.setViewName("product/ProductSet");
             mv.addObject("product", product);
@@ -158,13 +156,15 @@ public class ProductController {
     @PreAuthorize("hasRole('ADMIN')")
     // When clicked icon edit
     @GetMapping("/edit/{id}")
-    public ModelAndView edit(@PathVariable("id") int id) {
+    public ModelAndView edit(@PathVariable("id") int id, Model model) {
         // Check if exists
         if (!productService.existsById(id))
             return new ModelAndView("redirect:/product/list");
 
         Product product = productService.getOne(id).get();
         ModelAndView mv = new ModelAndView("/product/ProductSet");
+        List<Quality> listQuality = qualityService.list();
+        model.addAttribute("qualities", listQuality);
         mv.addObject("product", product);
         return mv;
     }

@@ -14,6 +14,9 @@
     <div class="card-body">
         <h5 class="card-title" th:text=" 'Nombre: ' + ${product.name}"> </h5>
         <p class="card-text" th:text="'Precio: ' + ${product.price}"></p>
+        <p class="card-text" th:text="'Unidad de medida: ' + ${product.unitMeasurement.unitName}"></p>
+        <p class="card-text" th:text="'Calidad del producto: ' + ${product.quality.qualityName}"></p>
+        <p class="card-text" th:text="'Cantidad Disponible: ' + ${product.quantity}"></p>
         <a class="btn btn-outline-info" th:href="@{/product/list}">
             <i class="fas fa-arrow-circle-left"></i>  Volver
         </a>

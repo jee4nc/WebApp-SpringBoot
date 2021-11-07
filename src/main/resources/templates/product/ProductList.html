@@ -28,7 +28,7 @@
             <td th:text="${product.name}"></td>
             <td th:text="${product.price}"></td>
             <td th:text="${product.quantity}"></td>
-            <td th:text="${product.quality}"></td>
+            <td th:text="${product.quality.qualityName}"></td>
             <td th:text="${product.unitMeasurement.unitName}"></td>
             <td><a th:href="@{'/product/details/' + ${product.id}}">
                 <button class="btn btn-outline-primary">

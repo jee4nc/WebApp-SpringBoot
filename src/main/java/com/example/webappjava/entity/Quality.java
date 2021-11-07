@@ -1,5 +1,6 @@
 package com.example.webappjava.entity;
 
+import com.example.webappjava.enums.QualityName;
 import com.example.webappjava.enums.UnitName;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.sun.istack.NotNull;
@@ -16,32 +17,26 @@ import java.util.List;
 @Setter
 @Entity
 @EqualsAndHashCode
-@Table(name = "unitMeasure")
-public class UnitMeasurement {
+@Table(name = "quality")
+public class Quality {
     @Id
     @SequenceGenerator(
-            name="unit_sequence",
-            sequenceName = "unit_sequence",
+            name="quality_sequence",
+            sequenceName = "quality_sequence",
             allocationSize = 1
     )
     @GeneratedValue(
             strategy = GenerationType.SEQUENCE,
-            generator = "unit_sequence"
+            generator = "quality_sequence"
     )
     private int id;
 
     @NotNull
     @Enumerated(EnumType.STRING)
     @Column(unique = true)
-    private UnitName unitName;
+    private QualityName qualityName;
 
-    // Esto es el atributo dentro de Productos , no el nombre de la clase
-    @OneToMany(mappedBy = "unitMeasurement", fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "quality", fetch = FetchType.LAZY)
     @JsonManagedReference
     private List<Product> products;
-
-    public UnitMeasurement(UnitName unitName, List<Product> products) {
-        this.unitName = unitName;
-        this.products = products;
-    }
 }

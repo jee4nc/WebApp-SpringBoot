@@ -11,7 +11,14 @@
 </head>
 <body>
 <header th:insert="fragments :: nav"></header>
-
+<div class="row" style="justify-content: center; justify-items: center">
+    <div class="col-2">
+        Crear carrito de compra
+    </div>
+    <div class="col-2">
+        carrito
+    </div>
+</div>
 <div class="row">
     <div class="col-4" style="padding-left: 7em; padding-top: 5em; padding-bottom: 2em" th:each="product, status : ${products}">
         <div class="card" style="max-width: 80%; text-align: center">

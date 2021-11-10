@@ -13,47 +13,42 @@
 <header th:insert="fragments :: nav"></header>
 <div class="row" style="justify-content: center; justify-items: center">
     <div class="col-2">
-        Crear carrito de compra
+        <form th:action="@{/ticket/create}" method="post">
+            <button type="submit" class="btn btn-primary" th:action="@{/ticket/create}" >
+                Create shop cart
+            </button>
+        </form>
     </div>
     <div class="col-2">
-        carrito
+        <button type="button" class="btn btn-success">
+            Carrito
+            <i class="fas fa-shopping-cart"></i>
+        </button>
     </div>
 </div>
 <div class="row">
     <div class="col-4" style="padding-left: 7em; padding-top: 5em; padding-bottom: 2em" th:each="product, status : ${products}">
-        <div class="card" style="max-width: 80%; text-align: center">
+        <div class="card border-dark" style="max-width: 80%; text-align: center">
             <img th:src="@{/imgs/apple.jpg.jpeg}" class="card-img-top" alt="...">
-            <div class="card-body">
+            <div class="card-body text-dark">
                 <h5 class="card-title" th:text="${product.name}"></h5>
-                <p class="card-text" th:text="'Precio: '+ ${product.price}"></p>
-                <p class="card-text">Cant. Disponible: [[${product.quantity}]]</p>
-                <p class="card-text">Calidad: [[${product.quality.qualityName}]]</p>
-                <p class="card-text">Unidad de venta: [[${product.unitMeasurement.unitName}]]</p>
-<!--                data-bs-target="#exampleModal"-->
-                <button type="button" class="btn btn-primary" data-bs-toggle="modal"
-                        data-bs-target="#exampleModal">
-                    Ver Detalles | 🛒
+                <p class="card-text">
+                    <strong>Precio: </strong>
+                    [[${product.price}]]
+                </p>
+                <p class="card-text">
+                    <strong>Cant. Disponible: </strong>
+                    [[${product.quantity}]]</p>
+                <p class="card-text">
+                    <strong>Calidad: </strong>
+                    [[${product.quality.qualityName}]]</p>
+                <p class="card-text">
+                    <input type="number" step="0.01" placeholder="Ingrese cantidad"/>
+                </p>
+                <button type="button" class="btn btn-primary">
+                    Agregar al carrito
+                    <i class="fas fa-cart-plus"></i>
                 </button>
-<!--                id="exampleModal"-->
-                <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
-                     aria-hidden="true">
-                    <div class="modal-dialog modal-dialog-centered">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h5 class="modal-title" id="exampleModalLabel" th:text="${product.name}"></h5>
-                                <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                        aria-label="Close"></button>
-                            </div>
-                            <div class="modal-body">
-                                Esta fruta vale : [[${product.price}]]
-                            </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                <button type="button" class="btn btn-primary">Save changes</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
             </div>
         </div>
     </div>

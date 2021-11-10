@@ -37,8 +37,12 @@ public class TicketDetail {
     private Product
     product;
 
-    public TicketDetail(String name, double quantity, double price, double total, Ticket ticket, Product product) {
-        super();
+    public TicketDetail(String name,
+                        double quantity,
+                        double price,
+                        double total,
+                        Ticket ticket,
+                        Product product) {
         this.name = name;
         this.quantity = quantity;
         this.price = price;

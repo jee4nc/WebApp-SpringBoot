@@ -41,10 +41,10 @@ public class UserController {
     @Autowired
     PasswordEncoder passwordEncoder;
 
-//    Esta funcion permite poder entregar una lista
+    //    Esta funcion permite poder entregar una lista
 //    de los paises al fronted register.html
     @GetMapping("/register")
-    public String register(Model model){
+    public String register(Model model) {
         // Testing code for load data into selection fields
         List<Country> listTest = countryService.list();
         model.addAttribute("countries", listTest);
@@ -55,7 +55,7 @@ public class UserController {
     }
 
 
-//    ACTION CREATE CONTROLLER (NOT THE VIEW, THE FUNCTION)
+    //    ACTION CREATE CONTROLLER (NOT THE VIEW, THE FUNCTION)
     @PostMapping("/registerUser")
     public ModelAndView registerUser(String email,
                                      String password,
@@ -63,44 +63,44 @@ public class UserController {
                                      String lastName,
                                      String street,
                                      Country country
-                                     ) {
+    ) {
         ModelAndView mv = new ModelAndView();
 
 //        VALIDATIONS OF FIELDS
-        if(StringUtils.isBlank(email)) {
+        if (StringUtils.isBlank(email)) {
             mv.setViewName("/register");
             mv.addObject("error", "El email no puede estar vacio.");
             return mv;
         }
-        if(StringUtils.isBlank(firstName)) {
+        if (StringUtils.isBlank(firstName)) {
             mv.setViewName("/register");
             mv.addObject("error", "Debes escribir tu nombre.");
             return mv;
         }
-        if(StringUtils.isBlank(lastName)) {
+        if (StringUtils.isBlank(lastName)) {
             mv.setViewName("/register");
             mv.addObject("error", "Debes escribir tu apellido.");
             return mv;
         }
-        if(StringUtils.isBlank(password)) {
+        if (StringUtils.isBlank(password)) {
             mv.setViewName("/register");
             mv.addObject("error", "La contraseña no puede estar vacia");
             return mv;
         }
-        if(StringUtils.isBlank(street)) {
+        if (StringUtils.isBlank(street)) {
             mv.setViewName("/register");
             mv.addObject("error", "La Calle no puede estar vacia");
             return mv;
         }
         String countryName = country.getName();
 
-        if(StringUtils.isBlank(countryName)) {
+        if (StringUtils.isBlank(countryName)) {
             mv.setViewName("/register");
             mv.addObject("error", "Debes seleccionar un pais");
             return mv;
         }
 
-        if(appUserService.existsByEmail(email)) {
+        if (appUserService.existsByEmail(email)) {
             mv.setViewName("/register");
             mv.addObject("error", "El email ingresado ya esta relacionado a una cuenta.");
             return mv;

@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.Date;
 
-@RestController
+@Controller
 @RequestMapping("/ticket")
 public class TicketController {
 

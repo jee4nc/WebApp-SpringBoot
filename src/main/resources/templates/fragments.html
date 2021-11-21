@@ -2,9 +2,9 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org"
       xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head th:fragment="headerFiles">
-    <meta  http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <title>Productos</title>
-    <link rel="icon" type="img/png" th:src="@{/imgs/carpivara.jpg}" />
+    <link rel="icon" type="img/png" th:src="@{/imgs/carpivara.jpg}"/>
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css"
           rel="stylesheet"
@@ -12,87 +12,94 @@
     <link rel="stylesheet"
           href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css"
           integrity="sha512-YWzhKL2whUzgiheMoBFwW8CKV4qpHQAEuvilg9FAn5VJUDwKZZxkJNuGM4XkWuk94WCrrwslk8yWNGmY1EduTA=="
-          crossorigin="anonymous" referrerpolicy="no-referrer" />
+          crossorigin="anonymous" referrerpolicy="no-referrer"/>
     <link rel="icon" type="img/png" th:href="@{/imgs/logo_carpi.ico}">
 </head>
 <body>
-    <div th:fragment="nav">
-        <!--NAVBAR-->
-        <nav class="navbar navbar-expand-lg navbar-light bg-lights">
-            <div class="container-fluid">
-                <div class="col-4">
-                    <a class="navbar-brand" th:href="@{/}">
-                        <i class="fas fa-carrot" style="font-size: 1.4em;">
-                            E-Fruits
-                        </i>
+<div th:fragment="nav">
+    <!--NAVBAR-->
+    <nav class="navbar navbar-expand-lg navbar-light bg-lights">
+        <div class="container-fluid">
+            <div class="col-4">
+                <a class="navbar-brand" th:href="@{/}">
+                    <i class="fas fa-carrot" style="font-size: 1.4em;">
+                        E-Fruits
+                    </i>
+                </a>
+            </div>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                    aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item" id="hover-icon3"
+                        sec:authorize="isAuthenticated() &&  hasRole('ROLE_ADMIN')">
+                        <a class="nav-link active"
+                           th:href="@{/product/list}" id="hover-icon3.3">
+                            <i class="fas fa-money-bill-wave"></i>
+                            List AdminUser</a>
+                    </li>
+                    <!--                        <li class="nav-item" id="hover-icon4" sec:authorize="isAuthenticated() &&  hasRole('ROLE_ADMIN')">-->
+                    <!--                            <a class="nav-link active" th:href="@{/}" id="hover-icon4.4">-->
+                    <!--                                <i class="fas fa-shopping-cart"></i>-->
+                    <!--                                Menu Usuario admin</a>-->
+                    <!--                        </li>-->
+                    <li class="nav-item" id="hover-icon4"
+                        sec:authorize="isAuthenticated() ">
+                        <a class="nav-link active"
+                           th:href="@{/product/list2}" id="hover-icon4.4">
+                            <i class="fas fa-money-bill-wave"></i>
+                            List NormalUser</a>
+                    </li>
+                </ul>
+<!--                Formulario botones crear e iniciar session-->
+                <form class="d-flex">
+                    <a th:href="@{/user/register}" sec:authorize="!isAuthenticated()">
+                        <button type="button"
+                                class="btn btn-primary"
+                                style="margin-right: 5px">Crea tu cuenta
+                        </button>
                     </a>
-                </div>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                        data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                        <li class="nav-item" id="hover-icon3"
-                            sec:authorize="isAuthenticated() ">
-                            <a class="nav-link active"
-                               th:href="@{/product/list}" id="hover-icon3.3">
-                                <i class="fas fa-money-bill-wave"></i>
-                                List AdminUser</a>
-                        </li>
-<!--                        <li class="nav-item" id="hover-icon4" sec:authorize="isAuthenticated() &&  hasRole('ROLE_ADMIN')">-->
-<!--                            <a class="nav-link active" th:href="@{/}" id="hover-icon4.4">-->
-<!--                                <i class="fas fa-shopping-cart"></i>-->
-<!--                                Menu Usuario admin</a>-->
-<!--                        </li>-->
-                        <li class="nav-item" id="hover-icon4"
-                            sec:authorize="isAuthenticated() ">
-                            <a class="nav-link active"
-                               th:href="@{/product/list2}" id="hover-icon4.4">
-                                <i class="fas fa-money-bill-wave"></i>
-                                List NormalUser</a>
-                        </li>
-                    </ul>
-                    <form class="d-flex">
-                        <a th:href="@{/user/register}" sec:authorize="!isAuthenticated()">
-                            <button type="button"
-                                    class="btn btn-primary"
-                                    style="margin-right: 5px">Crea tu cuenta</button>
-                        </a>
-                        <a th:href="@{/login}" sec:authorize="!isAuthenticated()">
-                            <button type="button" class="btn btn-success">Inicia Sesión</button>
-                        </a>
-                    </form>
-                </div>
-                <form sec:authorize="isAuthenticated()"
-                      class="form-inline my-2 my-lg-0"
-                      method="post" style="padding-right: 5px;">
-                    <!--                      th:action="@{/logout}"-->
-                    <button class="btn btn-outline-warning my-2 my-sm0" type="submit">
+                    <a th:href="@{/login}" sec:authorize="!isAuthenticated()">
+                        <button type="button" class="btn btn-success">Inicia Sesión</button>
+                    </a>
+                </form>
+<!--                End formulario crear e iniciar session-->
+            </div>
+
+<!--            Botones para crear formulario supplier carrier-->
+            <form class="form-inline my-2 my-lg-0"
+                    style="padding-right: 5px;">
+                <a th:href="@{/carrier}" sec:authorize="isAuthenticated()">
+                    <button class="btn btn-outline-warning my-2 my-sm0" type="button">
                         <i class="fas fa-seedling"></i> ¿ Eres proovedor ?
                     </button>
-                </form>
-                <form sec:authorize="isAuthenticated()"
-                      class="form-inline my-2 my-lg-0"
-                      method="post" style="padding-right: 5px;">
-<!--                      th:action="@{/logout}"-->
-                    <button class="btn btn-outline-info my-2 my-sm0" type="submit">
+                </a>
+            </form>
+            <form class="form-inline my-2 my-lg-0"
+                  method="post" style="padding-right: 5px;" >
+                <a th:href="@{/product/list2}" sec:authorize="isAuthenticated()">
+                    <button class="btn btn-outline-info my-2 my-sm0" type="button">
                         <i class="fas fa-truck"></i> ¿ Eres transportista ?
                     </button>
-                </form>
-                <form sec:authorize="isAuthenticated()" class="form-inline my-2 my-lg-0" th:action="@{/logout}"
-                      method="post">
-                    <button class="btn btn-outline-danger my-2 my-sm0" type="submit">
-                        <i class="fas fa-sign-out-alt"></i> Cerrar Sesión
-                    </button>
-                </form>
-            </div>
-        </nav>
-        <!--END NAVBAR-->
-    </div>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js"
-            integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ"
-            crossorigin="anonymous"></script>
+                </a>
+            </form>
+<!--            End Botones formulario supplier carrier-->
+
+            <form sec:authorize="isAuthenticated()" class="form-inline my-2 my-lg-0" th:action="@{/logout}"
+                  method="post">
+                <button class="btn btn-outline-danger my-2 my-sm0" type="submit">
+                    <i class="fas fa-sign-out-alt"></i> Cerrar Sesión
+                </button>
+            </form>
+        </div>
+    </nav>
+    <!--END NAVBAR-->
+</div>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ"
+        crossorigin="anonymous"></script>
 </body>
 </html>

@@ -1,9 +1,6 @@
 package com.example.webappjava.controller;
 
-import com.example.webappjava.entity.Product;
-import com.example.webappjava.entity.Quality;
-import com.example.webappjava.entity.Role;
-import com.example.webappjava.entity.UnitMeasurement;
+import com.example.webappjava.entity.*;
 import com.example.webappjava.enums.RoleName;
 import com.example.webappjava.service.ProductService;
 import com.example.webappjava.service.QualityService;
@@ -16,6 +13,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.ui.Model;
 
+import java.util.Collection;
 import java.util.List;
 
 @Controller

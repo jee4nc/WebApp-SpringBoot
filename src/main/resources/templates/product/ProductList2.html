@@ -34,7 +34,7 @@
          th:each="product, status : ${products}">
         <div class="card border-dark" style="max-width: 80%; text-align: center">
             <img th:src="@{/imgs/apple.jpg.jpeg}" class="card-img-top" alt="...">
-            <form th:action="@{ticketdetail/cart}" method="POST">
+            <form th:action="@{/ticket/cart}" method="POST">
                 <input type="hidden" th:value="${product.id}" name="id">
                 <div class="card-body text-dark">
                     <h5 class="card-title" th:text="${product.name}"></h5>
@@ -51,7 +51,7 @@
                     <p class="card-text">
                         <input type="number" step="0.01" placeholder="Ingrese cantidad"/>
                     </p>
-                    <button type="button" class="btn btn-primary">
+                    <button type="submit" class="btn btn-primary">
                         Agregar al carrito
                         <i class="fas fa-cart-plus"></i>
                     </button>

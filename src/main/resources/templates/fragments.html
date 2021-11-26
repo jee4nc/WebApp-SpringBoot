@@ -54,7 +54,7 @@
                             List NormalUser</a>
                     </li>
                 </ul>
-<!--                Formulario botones crear e iniciar session-->
+                <!--                Formulario botones crear e iniciar session-->
                 <form class="d-flex">
                     <a th:href="@{/user/register}" sec:authorize="!isAuthenticated()">
                         <button type="button"
@@ -66,27 +66,27 @@
                         <button type="button" class="btn btn-success">Inicia Sesión</button>
                     </a>
                 </form>
-<!--                End formulario crear e iniciar session-->
+                <!--                End formulario crear e iniciar session-->
             </div>
 
-<!--            Botones para crear formulario supplier carrier-->
+            <!--            Botones para crear formulario supplier carrier-->
             <form class="form-inline my-2 my-lg-0"
-                    style="padding-right: 5px;">
-                <a th:href="@{/carrier}" sec:authorize="isAuthenticated()">
+                  style="padding-right: 5px;">
+                <a th:href="@{/supplier}" sec:authorize="isAuthenticated()">
                     <button class="btn btn-outline-warning my-2 my-sm0" type="button">
                         <i class="fas fa-seedling"></i> ¿ Eres proovedor ?
                     </button>
                 </a>
             </form>
             <form class="form-inline my-2 my-lg-0"
-                  method="post" style="padding-right: 5px;" >
-                <a th:href="@{/product/list2}" sec:authorize="isAuthenticated()">
+                  method="post" style="padding-right: 5px;">
+                <a th:href="@{/carrier}" sec:authorize="isAuthenticated()">
                     <button class="btn btn-outline-info my-2 my-sm0" type="button">
                         <i class="fas fa-truck"></i> ¿ Eres transportista ?
                     </button>
                 </a>
             </form>
-<!--            End Botones formulario supplier carrier-->
+            <!--            End Botones formulario supplier carrier-->
 
             <form sec:authorize="isAuthenticated()" class="form-inline my-2 my-lg-0" th:action="@{/logout}"
                   method="post">

@@ -1,10 +1,30 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head th:insert="fragments :: headerFiles">
     <meta charset="UTF-8">
     <title>Formulario Transportista</title>
 </head>
 <body>
-<h1>Hola esto es el formulario de trasnsportista</h1>
+<header th:insert="fragments :: nav"></header>
+    <div class="container" style="border: 3px solid purple">
+        <div class="mb-3">
+            <h1>Hola esto es el formulario de trasnsportista</h1>
+        </div>
+        <form style="text-align: center; border: aqua 3px solid">
+            <div class="col-3">
+                <label for="rut" class="form-label">RUT</label>
+                <input type="text" class="form-control"  name="rut" required="required" id="rut">
+            </div>
+            <div class="col-3">
+                <label for="birthday" class="form-label">Fecha de nacimiento</label>
+                <input type="date" class="form-control"  name="birthday" required="required" id="birthday">
+            </div>
+            <div class="col-3">
+                <label for="tariff" class="form-label">Tarifa</label>
+                <input type="number" class="form-control"  name="tariff" required="required" id="tariff">
+            </div>
+        </form>
+    </div>
 </body>
 </html>

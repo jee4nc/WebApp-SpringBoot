@@ -16,6 +16,6 @@ public class CarrierController {
 
     @GetMapping
     public ModelAndView createForm() {
-        return new ModelAndView("/supplier/supplierForm");
+        return new ModelAndView("/carrier/carrierForm");
     }
 }

@@ -18,15 +18,9 @@ public class TicketController {
     @Autowired
     TicketService ticketService;
 
-    @PostMapping("/create")
-    public void createTicket() {
-        Ticket ticket = new Ticket();
-        Double total = 0.0;
-        Date today = new Date();
-        ticket.setCreationDate(today);
-        ticket.setTotal(total);
-        ticket.setDone(false);
-        ticketService.save(ticket);
+    @PostMapping("/cart")
+    public String addCart() {
+        return "carrito";
     }
 
 }

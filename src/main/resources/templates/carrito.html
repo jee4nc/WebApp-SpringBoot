@@ -54,12 +54,12 @@
             </tr>
             </thead>
             <tbody>
-            <tr >
-              <td >Nombre</td>
-              <td >precio</td>
-              <td >cantidad</td>
-              <td >total</td>
-              <td><a th:href="@{/delete/cart/{id} }" class="btn btn-danger">Quitar</a></td>
+            <tr th:each="dorder:${cart}">
+              <td th:text="${dorder.name}"></td>
+              <td th:text="${dorder.price}"></td>
+              <td th:text="${dorder.quantity}"></td>
+              <td th:text="${dorder.total}"></td>
+              <td><a th:href="@{/ticket/delete/cart/{id} (id=${dorder.product.id}) }" class="btn btn-danger">Quitar</a></td>
             </tr>
             </tbody>
           </table>
@@ -69,8 +69,7 @@
           <h2 class="card-title">SUBTOTAL</h2>
 
           <ul class="list-group">
-<!--            th:text="${orden.total}"-->
-            <li class="list-group-item"><h5 >Total</h5></li>
+            <li class="list-group-item"><h5 th:text="${ticket.total}">Total</h5></li>
             <a th:href="@{/order}" class="btn btn-dark">Ver Orden</a>
           </ul>
         </div>

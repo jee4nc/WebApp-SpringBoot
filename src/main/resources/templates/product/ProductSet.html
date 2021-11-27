@@ -16,13 +16,13 @@
                 <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}">
                 <!-- END -->
                 <div class="mb-3">
-                    <label for="name" class="form-label">Name of product</label>
+                    <label for="name" class="form-label">Nombre del producto</label>
                     <input type="text" class="form-control"
                            name="name" required="required"
                            id="name" th:value="${product.name}">
                 </div>
                 <div class="mb-3">
-                    <label for="price" class="form-label">Price of product</label>
+                    <label for="price" class="form-label">Precio del producto</label>
                     <input type="number"
                            class="form-control"
                            name="price"
@@ -31,7 +31,16 @@
                            th:value="${product.price}">
                 </div>
                 <div class="mb-3">
-                    <label for="quantity" class="form-label">Quantity</label>
+                    <label for="image" class="form-label">Link de imagen del producto</label>
+                    <input type="text"
+                           class="form-control"
+                           name="image"
+                           required="required"
+                           id="image"
+                           th:value="${product.image}">
+                </div>
+                <div class="mb-3">
+                    <label for="quantity" class="form-label">Cantidad</label>
                     <input type="number"
                            class="form-control"
                            name="quantity"
@@ -40,7 +49,7 @@
                            th:value="${product.quantity}">
                 </div>
                 <div class="mb-3">
-                    <label style="padding-bottom: 7px;">Quality</label>
+                    <label style="padding-bottom: 7px;">Calidad</label>
                     <select class="form-select form-select-sm"
                             aria-label=".form-select-sm example"
                             id="quality"

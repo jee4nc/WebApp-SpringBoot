@@ -8,6 +8,7 @@ import com.example.webappjava.service.UnitMeasureService;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.core.parameters.P;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
@@ -15,6 +16,8 @@ import org.springframework.ui.Model;
 
 import java.util.Collection;
 import java.util.List;
+import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Controller
 @RequestMapping("/product")
@@ -62,7 +65,9 @@ public class ProductController {
     @PreAuthorize("hasRole('ADMIN')")
     @PostMapping("/creator")
     public ModelAndView creator(@RequestParam String name, @RequestParam double price,
-                                @RequestParam double quantity, @RequestParam Quality quality,
+                                @RequestParam double quantity,
+                                @RequestParam String image,
+                                @RequestParam Quality quality,
                                 @RequestParam UnitMeasurement unitMeasurement) {
         ModelAndView mv = new ModelAndView();
         if (StringUtils.isBlank(name)) {
@@ -86,7 +91,7 @@ public class ProductController {
             return mv;
         }
 
-        Product product = new Product(name, price, quantity, quality, unitMeasurement);
+        Product product = new Product(name, price, quantity, image ,quality, unitMeasurement);
         productService.save(product);
 
 //        Here put URL to want redirect
@@ -110,6 +115,7 @@ public class ProductController {
                                @RequestParam String name,
                                @RequestParam double price,
                                @RequestParam double quantity,
+                               @RequestParam String image,
                                @RequestParam Quality quality) {
         // Check if exists
         if (!productService.existsById(id))
@@ -146,6 +152,7 @@ public class ProductController {
         product.setName(name);
         product.setPrice(price);
         product.setQuantity(quantity);
+        product.setImage(image);
         product.setQuality(quality);
         productService.save(product);
         return new ModelAndView("redirect:/product/list");
@@ -176,5 +183,14 @@ public class ProductController {
             return new ModelAndView("redirect:/product/list");
         }
         return null;
+    }
+
+    @PostMapping("/search")
+    public ModelAndView searchProduct(@RequestParam String nameProduct){
+        ModelAndView mv = new ModelAndView();
+        mv.setViewName("/product/ProductList2");
+        List<Product> products = productService.list().stream().filter(p -> p.getName().contains(nameProduct)).collect(Collectors.toList());
+        mv.addObject("products", products);
+        return mv;
     }
 }

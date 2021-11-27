@@ -31,6 +31,7 @@ public class Product {
     private String name;
 
     private Double price;
+    private String image;
 
     private Double quantity;
 
@@ -44,11 +45,12 @@ public class Product {
     @JsonBackReference
     private Quality quality;
 
-    public Product(String name, Double price, Double quantity, Quality quality, UnitMeasurement unitMeasurement) {
+    public Product(String name, Double price, Double quantity, String image, Quality quality, UnitMeasurement unitMeasurement) {
         this.name = name;
         this.price = price;
         this.quantity = quantity;
         this.quality = quality;
+        this.image = image;
         this.unitMeasurement = unitMeasurement;
     }
 }

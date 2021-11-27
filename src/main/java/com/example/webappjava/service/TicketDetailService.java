@@ -1,5 +1,10 @@
 package com.example.webappjava.service;
 
+import com.example.webappjava.entity.Ticket;
+import com.example.webappjava.entity.TicketDetail;
+import com.example.webappjava.repository.TicketDetailRepository;
+import com.example.webappjava.repository.TicketRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
@@ -8,4 +13,14 @@ import javax.transaction.Transactional;
 @Transactional
 public class TicketDetailService {
 
+    @Autowired
+    TicketDetailRepository ticketDetailRepository;
+
+    public void save(TicketDetail ticketDetail) {
+        ticketDetailRepository.save(ticketDetail);
+    }
+
+    public boolean existsById(int id) {
+        return ticketDetailRepository.existsById(id);
+    }
 }

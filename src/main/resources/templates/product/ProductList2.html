@@ -33,7 +33,7 @@
     <div class="col-4" style="padding-left: 7em; padding-top: 5em; padding-bottom: 2em"
          th:each="product, status : ${products}">
         <div class="card border-dark" style="max-width: 80%; text-align: center">
-            <img th:src="@{/imgs/apple.jpg.jpeg}" class="card-img-top" alt="...">
+            <img th:attr="src=${product.image}" style="max-width: 100%" class="card-img-top" alt="...">
             <form th:action="@{/ticket/cart}" method="POST">
                 <input type="hidden" th:value="${product.id}" name="id">
                 <input type="hidden" th:value="${#authentication.name}" name="emailUser">

@@ -138,6 +138,10 @@ public class TicketController {
         for(TicketDetail dt:ticketDetails){
             dt.setTicket(ticket);
             ticketDetailService.save(dt);
+            // Restar cantidad al inventario general
+            Product product = productService.getOne(dt.getProduct().getId()).get();
+            product.setQuantity(product.getQuantity() - dt.getQuantity());
+            productService.save(product);
         }
 
         ticket = new Ticket();

@@ -5,6 +5,7 @@ import com.example.webappjava.enums.RoleName;
 import com.example.webappjava.service.ProductService;
 import com.example.webappjava.service.QualityService;
 import com.example.webappjava.service.UnitMeasureService;
+import com.example.webappjava.service.nameSorter;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -45,6 +46,7 @@ public class ProductController {
         ModelAndView mv = new ModelAndView();
         mv.setViewName("/product/ProductList2");
         List<Product> products = productService.list();
+        products.sort(new nameSorter());
         mv.addObject("products", products);
         return mv;
     }

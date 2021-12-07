@@ -67,7 +67,9 @@ public class TicketController {
         ticketDetail.setName(product.getName());
         DecimalFormat df = new DecimalFormat("#.##");
         Double priceProduct = product.getPrice()*quantity;
-        ticketDetail.setTotal(Double.parseDouble(df.format(priceProduct)));
+        String cleanPrice = df.format(priceProduct);
+        cleanPrice = cleanPrice.replace(",",".");
+        ticketDetail.setTotal(Double.parseDouble(cleanPrice));
         ticketDetail.setProduct(product);
 
         // validation of multiple product

@@ -7,12 +7,13 @@
 </head>
 <body>
 <header th:insert="fragments :: nav"></header>
-<div class="container" sec:authorize="!isAuthenticated()" style="border: red 2px solid">
+<div class="container" sec:authorize="!isAuthenticated()">
     <div class="row align-items-start">
         <div class="col-4">
-
+            <img src="https://www.frutosdelmaipo.cl/wp-content/uploads/2018/09/Pimentones.jpg"
+                 style="max-width: 100%; max-height: 100%">
         </div>
-        <div class="col-8" style="border: purple 2px solid;">
+        <div class="col-8" style="vertical-align: center">
             <!--        CARRUSEL-->
             <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
                 <div class="carousel-indicators">
@@ -55,6 +56,17 @@
     <div class="row align-items-start">
         <div class="col-12" style="text-align: center; padding-top: 2.0em">
             <h2>El primer Ecommerce de compra y venta de Frutas y Verduras del País</h2>
+            <br/>
+            <h4>Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical
+                Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at
+                Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a
+                Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the
+                undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of "de Finibus Bonorum et
+                Malorum" (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the
+                theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, "Lorem ipsum dolor
+                sit amet..", comes from a line in section 1.10.32.</h4>
+            <br/>
+
         </div>
     </div>
 </div>

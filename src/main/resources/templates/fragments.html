@@ -71,12 +71,11 @@
 
             <!--            Botones para crear formulario supplier carrier-->
             <form class="form-inline my-2 my-lg-0"
-                  style="padding-right: 5px;">
-                <a th:href="@{/supplier}" sec:authorize="isAuthenticated()">
-                    <button class="btn btn-outline-warning my-2 my-sm0" type="button">
+                  style="padding-right: 5px;" th:action="@{/supplier}" method="POST" sec:authorize="isAuthenticated()">
+                    <input type="hidden" th:value="${#authentication.name}" name="emailUser">
+                    <button class="btn btn-outline-warning my-2 my-sm0" type="submit">
                         <i class="fas fa-seedling"></i> ¿ Eres proovedor ?
                     </button>
-                </a>
             </form>
             <form class="form-inline my-2 my-lg-0"
                   method="post" style="padding-right: 5px;">

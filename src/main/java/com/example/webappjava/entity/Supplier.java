@@ -32,9 +32,6 @@ public class Supplier {
     @NotNull
     private Date birthday;
 
-    @NotNull
-    private String street;
-
     @OneToOne(mappedBy = "supplier")
     private AppUser appUser;
 
@@ -42,10 +39,9 @@ public class Supplier {
     @JoinColumn(name = "city_id", nullable = false)
     private City city;
 
-    public Supplier(String rut, Date birthday, String street, AppUser appUser, City city) {
+    public Supplier(String rut, Date birthday, AppUser appUser, City city) {
         this.rut = rut;
         this.birthday = birthday;
-        this.street = street;
         this.appUser = appUser;
         this.city = city;
     }

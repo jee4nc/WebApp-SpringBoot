@@ -24,5 +24,11 @@ public class CreateCity  implements CommandLineRunner {
 //        Country countryFrom = countryService.getByName("Chile").get();
 //        city.setCountry(countryFrom);
 //        cityService.save(city);
+//
+//        City city2 = new City();
+//        city.setName("Santiago");
+//        Country countryFrom2 = countryService.getByName("Chile").get();
+//        city.setCountry(countryFrom2);
+//        cityService.save(city2);
     }
 }

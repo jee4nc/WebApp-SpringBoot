@@ -45,6 +45,11 @@ public class Product {
     @JsonBackReference
     private Quality quality;
 
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "supplier_id")
+    @JsonBackReference
+    private Supplier supplier;
+
     public Product(String name, Double price, Double quantity, String image, Quality quality, UnitMeasurement unitMeasurement) {
         this.name = name;
         this.price = price;

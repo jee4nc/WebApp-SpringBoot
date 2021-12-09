@@ -15,7 +15,7 @@ import java.util.Set;
 @Setter
 @NoArgsConstructor
 @EqualsAndHashCode
-public class City {
+public class  City {
 
     @Id
     @SequenceGenerator(

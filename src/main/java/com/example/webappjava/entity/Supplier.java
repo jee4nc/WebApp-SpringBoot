@@ -39,10 +39,19 @@ public class Supplier {
     @JoinColumn(name = "city_id", nullable = false)
     private City city;
 
-    public Supplier(String rut, Date birthday, AppUser appUser, City city) {
+    @ManyToOne
+    @JoinColumn(name = "product_id", nullable = false)
+    private Product product;
+
+    @NotNull
+    private Double price;
+
+    public Supplier(String rut, Date birthday, AppUser appUser, City city, Product product, Double price) {
         this.rut = rut;
         this.birthday = birthday;
         this.appUser = appUser;
         this.city = city;
+        this.product = product;
+        this.price = price;
     }
 }

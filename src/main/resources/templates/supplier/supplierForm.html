@@ -7,11 +7,11 @@
 </head>
 <body>
 <header th:insert="fragments :: nav"></header>
-<div class="container" style="border: 3px solid purple">
+<div class="container">
     <div class="mb-3">
         <h1>Hola esto es el formulario de Proovedor</h1>
     </div>
-    <form style="text-align: center; border: aqua 3px solid"
+    <form style="text-align: center;"
           th:action="@{/supplier/create}"
           method="POST">
         <input type="hidden" th:value="${#authentication.name}" name="emailUser">

@@ -72,18 +72,17 @@
             <!--            Botones para crear formulario supplier carrier-->
             <form class="form-inline my-2 my-lg-0"
                   style="padding-right: 5px;" th:action="@{/supplier}" method="POST" sec:authorize="isAuthenticated()">
-                    <input type="hidden" th:value="${#authentication.name}" name="emailUser">
-                    <button class="btn btn-outline-warning my-2 my-sm0" type="submit">
-                        <i class="fas fa-seedling"></i> ¿ Eres proovedor ?
-                    </button>
+                <input type="hidden" th:value="${#authentication.name}" name="emailUser">
+                <button class="btn btn-outline-warning my-2 my-sm0" type="submit">
+                    <i class="fas fa-seedling"></i> ¿ Eres proovedor ?
+                </button>
             </form>
             <form class="form-inline my-2 my-lg-0"
-                  method="post" style="padding-right: 5px;">
-                <a th:href="@{/carrier}" sec:authorize="isAuthenticated()">
-                    <button class="btn btn-outline-info my-2 my-sm0" type="button">
-                        <i class="fas fa-truck"></i> ¿ Eres transportista ?
-                    </button>
-                </a>
+                  method="get" style="padding-right: 5px;" th:action="@{/carrier}"
+                  sec:authorize="isAuthenticated()">
+                <button class="btn btn-outline-info my-2 my-sm0" type="submit">
+                    <i class="fas fa-truck"></i> ¿ Eres transportista ?
+                </button>
             </form>
             <!--            End Botones formulario supplier carrier-->
 

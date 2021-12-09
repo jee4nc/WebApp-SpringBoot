@@ -11,7 +11,8 @@
         <div class="mb-3">
             <h1>Hola esto es el formulario de trasnsportista</h1>
         </div>
-        <form style="text-align: center; border: aqua 3px solid">
+        <form style="text-align: center; border: aqua 3px solid"  th:action="@{/supplier/create}"
+              method="POST">
             <div class="col-3">
                 <label for="rut" class="form-label">RUT</label>
                 <input type="text" class="form-control"  name="rut" required="required" id="rut">
@@ -21,8 +22,30 @@
                 <input type="date" class="form-control"  name="birthday" required="required" id="birthday">
             </div>
             <div class="col-3">
+                <label for="destiny" class="form-label">Destino</label>
+                <input type="text" class="form-control"  name="destiny" required="required" id="destiny">
+            </div>
+            <div class="col-3">
+                <label style="padding-bottom: 7px;">Tipo De licencia</label>
+                <select class="form-select form-select-sm"
+                        aria-label=".form-select-sm example"
+                        id="product"
+                        name="product">
+                    <option th:each="licence: ${licenses}"
+                            th:value="${licence}"
+                            th:text="${licence}">
+                    </option>
+                </select>
+            </div>
+            <div class="col-3">
                 <label for="tariff" class="form-label">Tarifa</label>
                 <input type="number" class="form-control"  name="tariff" required="required" id="tariff">
+            </div>
+            <div class="col-3">
+                <button type="submit" class="btn btn-primary">
+                    Ofertar :D
+                    <i class="fas fa-cart-plus"></i>
+                </button>
             </div>
         </form>
     </div>

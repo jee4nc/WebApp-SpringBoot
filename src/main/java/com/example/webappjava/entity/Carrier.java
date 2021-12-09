@@ -49,6 +49,8 @@ public class Carrier {
     @JoinColumn(name="city_id", nullable = false)
     private City city;
 
+
+
     public Carrier(String rut, Date birthday, String typeLicense, String destiny, Float tariff, AppUser appUser, City city) {
         this.rut = rut;
         this.birthday = birthday;

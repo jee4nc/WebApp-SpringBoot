@@ -32,6 +32,7 @@
                     aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
+
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item" id="hover-icon3"
@@ -68,25 +69,14 @@
                 </form>
                 <!--                End formulario crear e iniciar session-->
             </div>
-
-            <!--            Botones para crear formulario supplier carrier-->
             <form class="form-inline my-2 my-lg-0"
-                  style="padding-right: 5px;" th:action="@{/supplier}" method="POST" sec:authorize="isAuthenticated()">
-                <input type="hidden" th:value="${#authentication.name}" name="emailUser">
-                <button class="btn btn-outline-warning my-2 my-sm0" type="submit">
-                    <i class="fas fa-seedling"></i> ¿ Eres proovedor ?
-                </button>
-            </form>
-            <form class="form-inline my-2 my-lg-0"
-                  method="get" style="padding-right: 5px;" th:action="@{/carrier}"
+                  method="get" style="padding-right: 5px;" th:action="@{/profile}"
                   sec:authorize="isAuthenticated()">
                 <input type="hidden" th:value="${#authentication.name}" name="emailUser">
                 <button class="btn btn-outline-info my-2 my-sm0" type="submit">
-                    <i class="fas fa-truck"></i> ¿ Eres transportista ?
+                    <i class="fas fa-user-circle"></i> Perfil
                 </button>
             </form>
-            <!--            End Botones formulario supplier carrier-->
-
             <form sec:authorize="isAuthenticated()" class="form-inline my-2 my-lg-0" th:action="@{/logout}"
                   method="post">
                 <button class="btn btn-outline-danger my-2 my-sm0" type="submit">

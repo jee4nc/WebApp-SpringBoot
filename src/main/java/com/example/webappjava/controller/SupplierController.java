@@ -91,6 +91,6 @@ public class SupplierController {
         logger.info("Precio usuario: {} ", price);
         logger.info("City usuario: {} ", city);
         logger.info("Product : {} ", product);
-        return "/supplier/supplierForm";
+        return "index";
     }
 }

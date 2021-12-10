@@ -77,6 +77,6 @@ public class CarrierController {
 
         appUser.setCarrier(carrier);
         appUserService.save(appUser);
-        return "/carrier/carrierForm";
+        return "index";
     }
 }

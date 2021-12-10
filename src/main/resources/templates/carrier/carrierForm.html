@@ -11,8 +11,9 @@
         <div class="mb-3">
             <h1>Hola esto es el formulario de trasnsportista</h1>
         </div>
-        <form style="text-align: center; border: aqua 3px solid"  th:action="@{/supplier/create}"
+        <form style="text-align: center; border: aqua 3px solid"  th:action="@{/carrier/create}"
               method="POST">
+            <input type="hidden" th:value="${#authentication.name}" name="emailUser">
             <div class="col-3">
                 <label for="rut" class="form-label">RUT</label>
                 <input type="text" class="form-control"  name="rut" required="required" id="rut">
@@ -22,18 +23,26 @@
                 <input type="date" class="form-control"  name="birthday" required="required" id="birthday">
             </div>
             <div class="col-3">
-                <label for="destiny" class="form-label">Destino</label>
-                <input type="text" class="form-control"  name="destiny" required="required" id="destiny">
-            </div>
-            <div class="col-3">
-                <label style="padding-bottom: 7px;">Tipo De licencia</label>
+                <label style="padding-bottom: 7px;">Ciudad</label>
                 <select class="form-select form-select-sm"
                         aria-label=".form-select-sm example"
-                        id="product"
-                        name="product">
-                    <option th:each="licence: ${licenses}"
-                            th:value="${licence}"
-                            th:text="${licence}">
+                        id="city"
+                        name="city">
+                    <option th:each="city: ${cities}"
+                            th:value="${city.id}"
+                            th:text="${city.name}">
+                    </option>
+                </select>
+            </div>
+            <div class="col-3">
+                <label style="padding-bottom: 7px;">Destino</label>
+                <select class="form-select form-select-sm"
+                        aria-label=".form-select-sm example"
+                        id="destiny"
+                        name="destiny">
+                    <option th:each="destiny: ${destinies}"
+                            th:value="${destiny}"
+                            th:text="${destiny}">
                     </option>
                 </select>
             </div>

@@ -80,6 +80,7 @@
             <form class="form-inline my-2 my-lg-0"
                   method="get" style="padding-right: 5px;" th:action="@{/carrier}"
                   sec:authorize="isAuthenticated()">
+                <input type="hidden" th:value="${#authentication.name}" name="emailUser">
                 <button class="btn btn-outline-info my-2 my-sm0" type="submit">
                     <i class="fas fa-truck"></i> ¿ Eres transportista ?
                 </button>

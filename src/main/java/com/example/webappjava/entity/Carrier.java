@@ -34,13 +34,10 @@ public class Carrier {
     private Date birthday;
 
     @NotNull
-    private String typeLicense;
-
-    @NotNull
     private String destiny;
 
     @NotNull
-    private Float tariff;
+    private  Double tariff;
 
     @OneToOne(mappedBy = "carrier")
     private AppUser appUser;
@@ -51,10 +48,9 @@ public class Carrier {
 
 
 
-    public Carrier(String rut, Date birthday, String typeLicense, String destiny, Float tariff, AppUser appUser, City city) {
+    public Carrier(String rut, Date birthday, String destiny, Double tariff, AppUser appUser, City city) {
         this.rut = rut;
         this.birthday = birthday;
-        this.typeLicense = typeLicense;
         this.destiny = destiny;
         this.tariff = tariff;
         this.appUser = appUser;

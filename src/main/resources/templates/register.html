@@ -38,15 +38,24 @@
                 <!-- Form's Fields-->
                 <div class="mb-3">
                     <label for="email" class="form-label">Email</label>
-                    <input type="email" class="form-control"  name="email" required="required" id="email">
+                    <input type="email" class="form-control"  name="email" maxlength="60" required="required" id="email">
                 </div>
                 <div class="mb-3">
                     <label for="firstName" class="form-label">First Name</label>
-                    <input type="text" class="form-control"  name="firstName" required="required" id="firstName">
+                    <input type="text"
+                           class="form-control"
+                           name="firstName"
+                           maxlength="30"
+                           onkeypress="allowAlphaNumericSpace(event)"
+                           required="required" id="firstName">
                 </div>
                 <div class="mb-3">
                     <label for="lastName" class="form-label">Last Name</label>
-                    <input type="text" class="form-control"  name="lastName" required="required" id="lastName">
+                    <input type="text" class="form-control"
+                           name="lastName"
+                           maxlength="30"
+                           onkeypress="allowAlphaNumericSpace(event)"
+                           required="required" id="lastName">
                 </div>
                 <div class="mb-3">
                     <label for="password" class="form-label">Password</label>
@@ -64,19 +73,9 @@
                         </option>
                     </select>
                 </div>
-<!--                <div class="mb-3">-->
-<!--                    <label style="padding-bottom: 7px;">City</label>-->
-<!--                    <select class="form-select form-select-sm" aria-label=".form-select-sm example"-->
-<!--                            th:field="*{cities}" id="cityLocation">-->
-<!--                        <option th:each="city: ${cities}"-->
-<!--                                th:value="${city.id}"-->
-<!--                                th:text="${city.name}">-->
-<!--                        </option>-->
-<!--                    </select>-->
-<!--                </div>-->
                 <div class="mb-3">
                     <label for="street" class="form-label">Street</label>
-                    <input type="text" class="form-control" name="street" required="required" id="street">
+                    <input type="text" class="form-control" maxlength="60" name="street" required="required" id="street">
                 </div>
                 <!-- END FORM FIELDS-->
 
@@ -102,5 +101,15 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ"
         crossorigin="anonymous"></script>
+<script>
+    function allowAlphaNumericSpace(e) {
+        var code = ('charCode' in e) ? e.charCode : e.keyCode;
+        if (!(code > 64 && code < 91) && // upper alpha (A-Z)
+            !(code == 32) && // space
+            !(code > 96 && code < 123)) { // lower alpha (a-z)
+            e.preventDefault();
+        }
+    }
+</script>
 </body>
 </html>

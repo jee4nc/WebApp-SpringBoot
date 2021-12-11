@@ -7,58 +7,84 @@
 </head>
 <body>
 <header th:insert="fragments :: nav"></header>
-<h1>Perfil de Usuario</h1>
-<!--            Botones para crear formulario supplier carrier-->
-<form class="form-inline my-2 my-lg-0"
-      th:if="${exist == 0}"
-      style="padding-right: 5px;" th:action="@{/supplier}" method="POST" sec:authorize="isAuthenticated()">
-    <input type="hidden" th:value="${#authentication.name}" name="emailUser">
-    <button class="btn btn-outline-warning my-2 my-sm0" type="submit">
-        <i class="fas fa-seedling"></i> ¿ Eres proovedor ?
-    </button>
-</form>
-<form class="form-inline my-2 my-lg-0"
-      th:if="${exist == 0}"
-      method="get" style="padding-right: 5px;" th:action="@{/carrier}"
-      sec:authorize="isAuthenticated()">
-    <input type="hidden" th:value="${#authentication.name}" name="emailUser">
-    <button
-            class="btn btn-outline-info my-2 my-sm0" type="submit">
-        <i class="fas fa-truck"></i> ¿ Eres transportista ?
-    </button>
-</form>
-<!--            End Botones formulario supplier carrier-->
-<div class="col-3">
-<h3 class="form-label" th:if="${!itsCarrier.equals(emptyStr)}" th:text="${itsCarrier}"></h3>
-<h3 class="form-label" th:if="${!itsSupplier.equals(emptyStr)}" th:text="${itsSupplier}"></h3>
-</div>
-<div class="col-3">
-    <h3 class="form-label" th:text="Nombre + ${user.firstName}"></h3>
-    <h3 class="form-label" th:text="Apellido + ${user.lastName}"></h3>
-</div>
-<div class="col-3">
-    <h3 th:if="${user.supplier != null}" class="form-label" th:text="Rut   + ${user.getSupplier().getRut()}">
+<div class="container" style="text-align: center">
+    <h1>Perfil de Usuario</h1>
+    <!--            Botones para crear formulario supplier carrier-->
+    <form class="form-inline my-2 my-lg-0"
+          th:if="${exist == 0}"
+          style="padding-right: 5px;" th:action="@{/supplier}" method="POST" sec:authorize="isAuthenticated()">
+        <input type="hidden" th:value="${#authentication.name}" name="emailUser">
+        <button class="btn btn-outline-warning my-2 my-sm0" type="submit">
+            <i class="fas fa-seedling"></i> ¿ Eres proovedor ?
+        </button>
+    </form>
+    <form class="form-inline my-2 my-lg-0"
+          th:if="${exist == 0}"
+          method="get" style="padding-right: 5px;" th:action="@{/carrier}"
+          sec:authorize="isAuthenticated()">
+        <input type="hidden" th:value="${#authentication.name}" name="emailUser">
+        <button
+                class="btn btn-outline-info my-2 my-sm0" type="submit">
+            <i class="fas fa-truck"></i> ¿ Eres transportista ?
+        </button>
+    </form>
+    <!--            End Botones formulario supplier carrier-->
+        <div class="form-label" th:if="${!itsCarrier.equals(emptyStr)}">
+            <div class="alert alert-info" role="alert">
+                [[${itsCarrier}]]
+            </div>
+        </div>
+    <div class="form-label" th:if="${!itsSupplier.equals(emptyStr)}">
+        <div class="alert alert-warning" role="alert">
+            [[${itsSupplier}]]
+        </div>
+    </div>
+    <div>
+        <h3 class="form-label">
+            <strong>Nombre :</strong>    [[${user.firstName}]]
+        </h3>
+        <h3 class="form-label">
+            <strong>Apellidos :</strong>[[${user.lastName}]]
+        </h3>
+    </div>
+    <div>
+        <h3 th:if="${user.supplier != null}" class="form-label">
+            <strong>
+                Rut :
+            </strong> [[${user.getSupplier().getRut()}]]
+        </h3>
+        <h3 th:if="${user.carrier != null}" class="form-label">
+            <strong>
+                Rut :
+            </strong> [[${user.getCarrier().getRut()}]]
+        </h3>
+    </div>
+    <div>
+        <h3 class="form-label">
+            <strong>
+                Pais :
+            </strong> [[${user.getCountry().name}]]
+        </h3>
+    </div>
+    <h3 th:if="${user.supplier != null}" class="form-label">
+        <strong>Ciudad : </strong> [[${user.getSupplier().getCity().name}]]
     </h3>
-    <h3 th:if="${user.carrier != null}" class="form-label" th:text="Rut    + ${user.getCarrier().getRut()}">
+    <h3 th:if="${user.carrier != null}" class="form-label">
+        <strong>Ciudad : </strong> [[${user.getCarrier().getCity().name}]]
     </h3>
+    <div>
+        <h3 class="form-label">
+            <strong>Calle : </strong> [[${user.street}]]
+        </h3>
+    </div>
+    <!--<div class="col-3">-->
+    <!--    <label th:if="${user.supplier != null}" class="form-label"-->
+    <!--           th:text="Fecha Nacimineto   + ${user.getSupplier().getBirthday().toString()}">-->
+    <!--    </label>-->
+    <!--    <label th:if="${user.carrier != null}" class="form-label"-->
+    <!--           th:text="Fecha Nacimiento    + ${formatter.format(user.getCarrier().getBirthday())}">-->
+    <!--    </label>-->
+    <!--</div>-->
 </div>
-<div class="col-3">
-    <h3 class="form-label" th:text="Pais + ${user.getCountry().name}"></h3>
-</div>
-<h3 th:if="${user.supplier != null}" class="form-label" th:text="Ciudad   + ${user.getSupplier().getCity().name}">
-</h3>
-<h3 th:if="${user.carrier != null}" class="form-label" th:text="Ciudad    + ${user.getCarrier().getCity().name}">
-</h3>
-<div class="col-3">
-    <h3 class="form-label" th:text="Calle + ${user.street}"></h3>
-</div>
-<!--<div class="col-3">-->
-<!--    <label th:if="${user.supplier != null}" class="form-label"-->
-<!--           th:text="Fecha Nacimineto   + ${user.getSupplier().getBirthday().toString()}">-->
-<!--    </label>-->
-<!--    <label th:if="${user.carrier != null}" class="form-label"-->
-<!--           th:text="Fecha Nacimiento    + ${formatter.format(user.getCarrier().getBirthday())}">-->
-<!--    </label>-->
-<!--</div>-->
 </body>
 </html>

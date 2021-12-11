@@ -17,11 +17,20 @@
         <input type="hidden" th:value="${#authentication.name}" name="emailUser">
         <div class="col-3">
             <label for="rut" class="form-label">RUT</label>
-            <input type="text" class="form-control"  name="rut" required="required" id="rut">
+            <input type="text" class="form-control"
+                   maxlength="9"
+                   onkeypress="allowAlphaNumericSpace(event)"
+                   name="rut"
+                   required="required"
+                   id="rut">
         </div>
         <div class="col-3">
             <label for="birthday" class="form-label">Fecha de nacimiento</label>
-            <input type="date" class="form-control"  name="birthday" required="required" id="birthday">
+            <input type="date" class="form-control"
+                   name="birthday"
+                   required="required"
+                   max='2003-01-01'
+                   id="birthday">
         </div>
         <div class="col-3">
             <label style="padding-bottom: 7px;">Ciudad</label>
@@ -48,8 +57,11 @@
             </select>
         </div>
         <div class="col-3">
-            <label for="price" class="form-label">Precio</label>
-            <input type="number" class="form-control"  name="price" required="required" id="price">
+            <label for="price" class="form-label">Precio por Kg/Unidad</label>
+            <input type="number" class="form-control"
+                   name="price"
+                   maxlength="8"
+                   required="required" id="price">
         </div>
         <div class="col-3">
             <button type="submit" class="btn btn-primary">
@@ -59,5 +71,16 @@
         </div>
     </form>
 </div>
+<script >
+    function allowAlphaNumericSpace(e) {
+        var code = ('charCode' in e) ? e.charCode : e.keyCode;
+        if (!(code == 32) && // space
+            !(code > 47 && code < 58) && // numeric (0-9)
+            !(code > 64 && code < 91) && // upper alpha (A-Z)
+            !(code > 96 && code < 123)) { // lower alpha (a-z)
+            e.preventDefault();
+        }
+    }
+</script>
 </body>
 </html>

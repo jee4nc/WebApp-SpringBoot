@@ -51,8 +51,8 @@
                         sec:authorize="isAuthenticated() ">
                         <a class="nav-link active"
                            th:href="@{/product/list2}" id="hover-icon4.4">
-                            <i class="fas fa-money-bill-wave"></i>
-                            List NormalUser</a>
+                            <i class="fas fa-shopping-basket"></i>
+                            Comprar Productos</a>
                     </li>
                 </ul>
                 <!--                Formulario botones crear e iniciar session-->
@@ -73,13 +73,13 @@
                   method="get" style="padding-right: 5px;" th:action="@{/profile}"
                   sec:authorize="isAuthenticated()">
                 <input type="hidden" th:value="${#authentication.name}" name="emailUser">
-                <button class="btn btn-outline-info my-2 my-sm0" type="submit">
+                <button class="btn btn btn-info my-2 my-sm0" type="submit">
                     <i class="fas fa-user-circle"></i> Perfil
                 </button>
             </form>
             <form sec:authorize="isAuthenticated()" class="form-inline my-2 my-lg-0" th:action="@{/logout}"
                   method="post">
-                <button class="btn btn-outline-danger my-2 my-sm0" type="submit">
+                <button class="btn btn btn-danger my-2 my-sm0" type="submit">
                     <i class="fas fa-sign-out-alt"></i> Cerrar Sesión
                 </button>
             </form>

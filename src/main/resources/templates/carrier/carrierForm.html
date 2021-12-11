@@ -7,20 +7,29 @@
 </head>
 <body>
 <header th:insert="fragments :: nav"></header>
-    <div class="container" style="border: 3px solid purple">
+    <div class="container">
         <div class="mb-3">
             <h1>Hola esto es el formulario de trasnsportista</h1>
         </div>
-        <form style="text-align: center; border: aqua 3px solid"  th:action="@{/carrier/create}"
+        <form style="text-align: center;"  th:action="@{/carrier/create}"
               method="POST">
             <input type="hidden" th:value="${#authentication.name}" name="emailUser">
             <div class="col-3">
                 <label for="rut" class="form-label">RUT</label>
-                <input type="text" class="form-control"  name="rut" required="required" id="rut">
+                <input type="text" class="form-control" maxlength="9"
+                       onkeypress="allowAlphaNumericSpace(event)"
+                       name="rut"
+                       required="required"
+                       id="rut">
             </div>
             <div class="col-3">
-                <label for="birthday" class="form-label">Fecha de nacimiento</label>
-                <input type="date" class="form-control"  name="birthday" required="required" id="birthday">
+                <label for="birthday"
+                       class="form-label">Fecha de nacimiento</label>
+                <input type="date" class="form-control"
+                       max='2003-01-01'
+                       name="birthday"
+                       required="required"
+                       id="birthday">
             </div>
             <div class="col-3">
                 <label style="padding-bottom: 7px;">Ciudad</label>
@@ -47,8 +56,8 @@
                 </select>
             </div>
             <div class="col-3">
-                <label for="tariff" class="form-label">Tarifa</label>
-                <input type="number" class="form-control"  name="tariff" required="required" id="tariff">
+                <label for="tariff" class="form-label">Tarifa por Km</label>
+                <input type="number" class="form-control" maxlength="8"  name="tariff" required="required" id="tariff">
             </div>
             <div class="col-3">
                 <button type="submit" class="btn btn-primary">
@@ -58,5 +67,17 @@
             </div>
         </form>
     </div>
+<script >
+    function allowAlphaNumericSpace(e) {
+        var code = ('charCode' in e) ? e.charCode : e.keyCode;
+        if (!(code == 32) && // space
+            !(code > 47 && code < 58) && // numeric (0-9)
+            !(code > 64 && code < 91) && // upper alpha (A-Z)
+            !(code > 96 && code < 123)) { // lower alpha (a-z)
+            e.preventDefault();
+        }
+    }
+
+</script>
 </body>
 </html>
